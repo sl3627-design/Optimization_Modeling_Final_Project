@@ -1,0 +1,3829 @@
+You are an expert quantitative portfolio manager. The current date is 2024-12-31.
+Your task is to select a consensus top-40 stock portfolio to hold for the next 12 months, derived from 20 independent selection trials.
+
+### YOUR ANALYTICAL MANDATE ###
+Holistically evaluate the provided universe. Balance stable fundamental growth, earnings quality, momentum, and manageable risk.
+
+- Profitability (ROA & ROE): Higher is generally better.
+- Quality of Earnings (QoE): Higher is better.
+- Accruals: Lower (or negative) is generally better.
+- 12M Momentum Score: Higher is better.
+- Annualized Volatility: Lower is preferred unless compensated by strong fundamentals.
+
+Do not apply rigid single-metric cutoffs. Look for the best composite profiles.
+
+### MULTI-TRIAL PROCEDURE ###
+Run exactly 20 independent selection trials on the universe below. Each trial must:
+  1. Score every stock on the mandate above and pick its own top 40.
+  2. Vary meaningfully from the other trials. Achieve this by perturbing the composite in one or more of these ways per trial: shift the relative weights on profitability / QoE / accruals / momentum / volatility within defensible ranges; apply mild winsorization or rank-based transforms to different factors; break near-ties on the boundary differently; tilt slightly toward quality vs. momentum vs. low-vol. Do NOT change the sign of any mandate relationship (e.g., higher momentum is always better).
+  3. The first trial should reflect your single best composite; subsequent trials should explore nearby defensible configurations.
+
+### AGGREGATION ###
+After the 20 trials, count how often each stock was selected. Return the 40 stocks with the highest selection frequency. Break frequency ties using the average composite score across the trials in which the stock appeared (higher is better).
+
+### INTERNAL REASONING ###
+Do all trial scoring, aggregation, and tie-breaking internally. Do NOT include per-trial picks, scores, counts, or any reasoning in the output. The output must be only the final consensus CSV.
+
+### UNIVERSE DATA ###
+
+#### Stock ID: stock_454 ####
+* ROA: 0.0498
+* ROE: 0.2182
+* QoE: 0.9015
+* Accruals: 0.0049
+* 12M Momentum (ex-1M): 2.8155
+* Annualized Volatility: 0.4898
+
+#### Stock ID: stock_223 ####
+* ROA: 0.1171
+* ROE: 0.3313
+* QoE: 0.4489
+* Accruals: 0.0645
+* 12M Momentum (ex-1M): 0.0197
+* Annualized Volatility: 0.3694
+
+#### Stock ID: stock_99 ####
+* ROA: 0.0001
+* ROE: 0.0043
+* QoE: 295.7951
+* Accruals: -0.0149
+* 12M Momentum (ex-1M): 0.2358
+* Annualized Volatility: 0.1791
+
+#### Stock ID: stock_40 ####
+* ROA: 0.0798
+* ROE: 0.4630
+* QoE: 1.2677
+* Accruals: -0.0214
+* 12M Momentum (ex-1M): 2.5019
+* Annualized Volatility: 0.4750
+
+#### Stock ID: stock_453 ####
+* ROA: 0.0470
+* ROE: 0.0669
+* QoE: 1.3103
+* Accruals: -0.0146
+* 12M Momentum (ex-1M): 0.1505
+* Annualized Volatility: 0.2251
+
+#### Stock ID: stock_297 ####
+* ROA: 0.0671
+* ROE: -0.6709
+* QoE: 1.1387
+* Accruals: -0.0093
+* 12M Momentum (ex-1M): 0.5012
+* Annualized Volatility: 0.1714
+
+#### Stock ID: stock_284 ####
+* ROA: 0.0033
+* ROE: -0.0912
+* QoE: 8.6556
+* Accruals: -0.0255
+* 12M Momentum (ex-1M): 0.4472
+* Annualized Volatility: 0.2093
+
+#### Stock ID: stock_328 ####
+* ROA: 0.2011
+* ROE: 0.2930
+* QoE: 0.9129
+* Accruals: 0.0175
+* 12M Momentum (ex-1M): 1.5279
+* Annualized Volatility: 0.4582
+
+#### Stock ID: stock_357 ####
+* ROA: 0.0249
+* ROE: 0.0313
+* QoE: 2.9247
+* Accruals: -0.0479
+* 12M Momentum (ex-1M): 1.3133
+* Annualized Volatility: 0.4371
+
+#### Stock ID: stock_224 ####
+* ROA: 0.0212
+* ROE: 0.0336
+* QoE: 2.9202
+* Accruals: -0.0408
+* 12M Momentum (ex-1M): 0.1281
+* Annualized Volatility: 0.2705
+
+#### Stock ID: stock_61 ####
+* ROA: 0.0616
+* ROE: 0.0872
+* QoE: 0.0000
+* Accruals: 0.0616
+* 12M Momentum (ex-1M): 0.5868
+* Annualized Volatility: 0.3555
+
+#### Stock ID: stock_427 ####
+* ROA: 0.0177
+* ROE: 0.0869
+* QoE: 1.3962
+* Accruals: -0.0070
+* 12M Momentum (ex-1M): 1.4044
+* Annualized Volatility: 0.2398
+
+#### Stock ID: stock_102 ####
+* ROA: 0.0135
+* ROE: 0.0567
+* QoE: 1.0321
+* Accruals: -0.0004
+* 12M Momentum (ex-1M): 0.1044
+* Annualized Volatility: 0.2121
+
+#### Stock ID: stock_201 ####
+* ROA: 0.0214
+* ROE: 1.6158
+* QoE: 2.7677
+* Accruals: -0.0378
+* 12M Momentum (ex-1M): 0.2609
+* Annualized Volatility: 0.2346
+
+#### Stock ID: stock_232 ####
+* ROA: -0.0018
+* ROE: 1.0549
+* QoE: -7.5227
+* Accruals: -0.0155
+* 12M Momentum (ex-1M): 0.8538
+* Annualized Volatility: 0.2614
+
+#### Stock ID: stock_174 ####
+* ROA: 0.0790
+* ROE: -0.1410
+* QoE: 1.6691
+* Accruals: -0.0528
+* 12M Momentum (ex-1M): 1.0675
+* Annualized Volatility: 0.3043
+
+#### Stock ID: stock_342 ####
+* ROA: 0.0172
+* ROE: 0.0593
+* QoE: 4.3045
+* Accruals: -0.0569
+* 12M Momentum (ex-1M): 0.6815
+* Annualized Volatility: 0.3272
+
+#### Stock ID: stock_80 ####
+* ROA: 0.0232
+* ROE: 0.0927
+* QoE: -0.0933
+* Accruals: 0.0253
+* 12M Momentum (ex-1M): 0.8027
+* Annualized Volatility: 0.3949
+
+#### Stock ID: stock_184 ####
+* ROA: 0.0146
+* ROE: 0.0970
+* QoE: 0.8143
+* Accruals: 0.0027
+* 12M Momentum (ex-1M): 0.8164
+* Annualized Volatility: 0.2899
+
+#### Stock ID: stock_251 ####
+* ROA: 0.0017
+* ROE: 0.0097
+* QoE: 3.1242
+* Accruals: -0.0035
+* 12M Momentum (ex-1M): 0.8957
+* Annualized Volatility: 0.2872
+
+#### Stock ID: stock_434 ####
+* ROA: 0.0369
+* ROE: 0.1014
+* QoE: 1.6873
+* Accruals: -0.0254
+* 12M Momentum (ex-1M): 0.6993
+* Annualized Volatility: 0.2291
+
+#### Stock ID: stock_438 ####
+* ROA: 0.0133
+* ROE: 0.0844
+* QoE: 1.5523
+* Accruals: -0.0073
+* 12M Momentum (ex-1M): 0.9957
+* Annualized Volatility: 0.3791
+
+#### Stock ID: stock_318 ####
+* ROA: 0.0452
+* ROE: 0.1040
+* QoE: 0.9821
+* Accruals: 0.0008
+* 12M Momentum (ex-1M): 0.7251
+* Annualized Volatility: 0.2599
+
+#### Stock ID: stock_59 ####
+* ROA: 0.0087
+* ROE: 0.0198
+* QoE: 6.0045
+* Accruals: -0.0438
+* 12M Momentum (ex-1M): -0.0598
+* Annualized Volatility: 0.2378
+
+#### Stock ID: stock_92 ####
+* ROA: 0.0252
+* ROE: 0.0713
+* QoE: 0.7911
+* Accruals: 0.0053
+* 12M Momentum (ex-1M): 0.5613
+* Annualized Volatility: 0.2310
+
+#### Stock ID: stock_10 ####
+* ROA: 0.0003
+* ROE: 0.0008
+* QoE: 72.2222
+* Accruals: -0.0246
+* 12M Momentum (ex-1M): -0.0278
+* Annualized Volatility: 0.2382
+
+#### Stock ID: stock_373 ####
+* ROA: 0.0300
+* ROE: 0.1538
+* QoE: 0.8074
+* Accruals: 0.0058
+* 12M Momentum (ex-1M): 0.8941
+* Annualized Volatility: 0.3267
+
+#### Stock ID: stock_352 ####
+* ROA: 0.0222
+* ROE: 0.0859
+* QoE: 1.9759
+* Accruals: -0.0216
+* 12M Momentum (ex-1M): 0.6827
+* Annualized Volatility: 0.2065
+
+#### Stock ID: stock_33 ####
+* ROA: 0.0582
+* ROE: 0.0809
+* QoE: 1.5703
+* Accruals: -0.0332
+* 12M Momentum (ex-1M): 0.7238
+* Annualized Volatility: 0.3844
+
+#### Stock ID: stock_467 ####
+* ROA: 0.0131
+* ROE: 0.0475
+* QoE: 1.7606
+* Accruals: -0.0100
+* 12M Momentum (ex-1M): 0.7404
+* Annualized Volatility: 0.1956
+
+#### Stock ID: stock_349 ####
+* ROA: 0.0203
+* ROE: 0.0482
+* QoE: 1.5037
+* Accruals: -0.0102
+* 12M Momentum (ex-1M): -0.0342
+* Annualized Volatility: 0.2334
+
+#### Stock ID: stock_264 ####
+* ROA: 0.0721
+* ROE: 0.3170
+* QoE: 1.8916
+* Accruals: -0.0643
+* 12M Momentum (ex-1M): 0.5002
+* Annualized Volatility: 0.2767
+
+#### Stock ID: stock_48 ####
+* ROA: 0.0167
+* ROE: 0.0319
+* QoE: 1.3625
+* Accruals: -0.0061
+* 12M Momentum (ex-1M): 0.7227
+* Annualized Volatility: 0.2807
+
+#### Stock ID: stock_260 ####
+* ROA: 0.0273
+* ROE: 0.0780
+* QoE: 1.8022
+* Accruals: -0.0219
+* 12M Momentum (ex-1M): 0.6182
+* Annualized Volatility: 0.2096
+
+#### Stock ID: stock_178 ####
+* ROA: 0.0367
+* ROE: 0.0714
+* QoE: 0.1911
+* Accruals: 0.0297
+* 12M Momentum (ex-1M): 0.6181
+* Annualized Volatility: 0.2056
+
+#### Stock ID: stock_217 ####
+* ROA: 0.0314
+* ROE: 0.0737
+* QoE: 0.7349
+* Accruals: 0.0083
+* 12M Momentum (ex-1M): 0.7829
+* Annualized Volatility: 0.2714
+
+#### Stock ID: stock_390 ####
+* ROA: 0.0030
+* ROE: 0.0298
+* QoE: 13.5639
+* Accruals: -0.0380
+* 12M Momentum (ex-1M): 0.2767
+* Annualized Volatility: 0.2430
+
+#### Stock ID: stock_140 ####
+* ROA: 0.0318
+* ROE: 0.1170
+* QoE: 1.1909
+* Accruals: -0.0061
+* 12M Momentum (ex-1M): 0.4899
+* Annualized Volatility: 0.2348
+
+#### Stock ID: stock_161 ####
+* ROA: 0.2367
+* ROE: 0.3195
+* QoE: 0.1146
+* Accruals: 0.2096
+* 12M Momentum (ex-1M): 0.2401
+* Annualized Volatility: 0.2693
+
+#### Stock ID: stock_45 ####
+* ROA: 0.0261
+* ROE: 0.0639
+* QoE: 1.2960
+* Accruals: -0.0077
+* 12M Momentum (ex-1M): 0.4477
+* Annualized Volatility: 0.4258
+
+#### Stock ID: stock_335 ####
+* ROA: 0.0136
+* ROE: 0.0410
+* QoE: 1.8052
+* Accruals: -0.0109
+* 12M Momentum (ex-1M): 0.6992
+* Annualized Volatility: 0.2108
+
+#### Stock ID: stock_411 ####
+* ROA: 0.0066
+* ROE: 0.0494
+* QoE: 3.5019
+* Accruals: -0.0166
+* 12M Momentum (ex-1M): 0.6295
+* Annualized Volatility: 0.2973
+
+#### Stock ID: stock_254 ####
+* ROA: 0.0088
+* ROE: 0.0197
+* QoE: 1.9984
+* Accruals: -0.0088
+* 12M Momentum (ex-1M): 0.6877
+* Annualized Volatility: 0.1843
+
+#### Stock ID: stock_437 ####
+* ROA: 0.0152
+* ROE: 0.0232
+* QoE: 3.4747
+* Accruals: -0.0376
+* 12M Momentum (ex-1M): 0.4162
+* Annualized Volatility: 0.2124
+
+#### Stock ID: stock_86 ####
+* ROA: 0.0222
+* ROE: 0.0594
+* QoE: 1.1122
+* Accruals: -0.0025
+* 12M Momentum (ex-1M): 0.5753
+* Annualized Volatility: 0.2157
+
+#### Stock ID: stock_457 ####
+* ROA: 0.0152
+* ROE: 0.0275
+* QoE: 1.9152
+* Accruals: -0.0139
+* 12M Momentum (ex-1M): 0.5401
+* Annualized Volatility: 0.1873
+
+#### Stock ID: stock_308 ####
+* ROA: 0.0405
+* ROE: 0.4191
+* QoE: 1.3505
+* Accruals: -0.0142
+* 12M Momentum (ex-1M): 0.5893
+* Annualized Volatility: 0.1682
+
+#### Stock ID: stock_468 ####
+* ROA: 0.0174
+* ROE: 0.0485
+* QoE: 1.4335
+* Accruals: -0.0075
+* 12M Momentum (ex-1M): 0.7546
+* Annualized Volatility: 0.1719
+
+#### Stock ID: stock_136 ####
+* ROA: 0.0123
+* ROE: 0.0967
+* QoE: 3.7748
+* Accruals: -0.0340
+* 12M Momentum (ex-1M): 0.6183
+* Annualized Volatility: 0.2698
+
+#### Stock ID: stock_370 ####
+* ROA: 0.0155
+* ROE: 0.0414
+* QoE: 2.5237
+* Accruals: -0.0237
+* 12M Momentum (ex-1M): 0.5108
+* Annualized Volatility: 0.3058
+
+#### Stock ID: stock_405 ####
+* ROA: 0.0022
+* ROE: 0.0283
+* QoE: 3.7096
+* Accruals: -0.0058
+* 12M Momentum (ex-1M): 0.2901
+* Annualized Volatility: 0.2045
+
+#### Stock ID: stock_67 ####
+* ROA: 0.0133
+* ROE: 0.0360
+* QoE: 1.8884
+* Accruals: -0.0118
+* 12M Momentum (ex-1M): 0.5999
+* Annualized Volatility: 0.1811
+
+#### Stock ID: stock_347 ####
+* ROA: 0.0096
+* ROE: 0.0323
+* QoE: 1.1981
+* Accruals: -0.0019
+* 12M Momentum (ex-1M): 0.5857
+* Annualized Volatility: 0.1890
+
+#### Stock ID: stock_355 ####
+* ROA: 0.0272
+* ROE: 0.0558
+* QoE: 1.3738
+* Accruals: -0.0102
+* 12M Momentum (ex-1M): 0.5575
+* Annualized Volatility: 0.1850
+
+#### Stock ID: stock_68 ####
+* ROA: 0.0123
+* ROE: 0.0224
+* QoE: 2.1365
+* Accruals: -0.0140
+* 12M Momentum (ex-1M): 0.5682
+* Annualized Volatility: 0.1670
+
+#### Stock ID: stock_192 ####
+* ROA: 0.0219
+* ROE: 0.0471
+* QoE: 1.8664
+* Accruals: -0.0190
+* 12M Momentum (ex-1M): 0.4186
+* Annualized Volatility: 0.3465
+
+#### Stock ID: stock_289 ####
+* ROA: 0.0612
+* ROE: 0.0954
+* QoE: 1.5760
+* Accruals: -0.0352
+* 12M Momentum (ex-1M): 0.5092
+* Annualized Volatility: 0.2969
+
+#### Stock ID: stock_204 ####
+* ROA: 0.0094
+* ROE: 0.0451
+* QoE: 2.1877
+* Accruals: -0.0112
+* 12M Momentum (ex-1M): 0.5544
+* Annualized Volatility: 0.1987
+
+#### Stock ID: stock_425 ####
+* ROA: 0.0145
+* ROE: 0.0476
+* QoE: 2.0069
+* Accruals: -0.0146
+* 12M Momentum (ex-1M): 0.5627
+* Annualized Volatility: 0.1727
+
+#### Stock ID: stock_39 ####
+* ROA: 0.0309
+* ROE: 0.0634
+* QoE: 1.1650
+* Accruals: -0.0051
+* 12M Momentum (ex-1M): 0.5668
+* Annualized Volatility: 0.2486
+
+#### Stock ID: stock_463 ####
+* ROA: 0.0092
+* ROE: 0.0145
+* QoE: 1.5227
+* Accruals: -0.0048
+* 12M Momentum (ex-1M): 0.5555
+* Annualized Volatility: 0.1811
+
+#### Stock ID: stock_191 ####
+* ROA: 0.0106
+* ROE: 0.0412
+* QoE: 2.2454
+* Accruals: -0.0132
+* 12M Momentum (ex-1M): 0.5411
+* Annualized Volatility: 0.2911
+
+#### Stock ID: stock_23 ####
+* ROA: 0.0105
+* ROE: 0.0571
+* QoE: 2.6899
+* Accruals: -0.0177
+* 12M Momentum (ex-1M): 0.5125
+* Annualized Volatility: 0.2084
+
+#### Stock ID: stock_69 ####
+* ROA: 0.0183
+* ROE: 0.0401
+* QoE: 1.5648
+* Accruals: -0.0104
+* 12M Momentum (ex-1M): 0.5374
+* Annualized Volatility: 0.2866
+
+#### Stock ID: stock_107 ####
+* ROA: 0.0167
+* ROE: 0.0261
+* QoE: 1.2986
+* Accruals: -0.0050
+* 12M Momentum (ex-1M): 0.4768
+* Annualized Volatility: 0.2848
+
+#### Stock ID: stock_175 ####
+* ROA: 0.0065
+* ROE: 0.0135
+* QoE: 4.3795
+* Accruals: -0.0220
+* 12M Momentum (ex-1M): 0.4402
+* Annualized Volatility: 0.2072
+
+#### Stock ID: stock_228 ####
+* ROA: 0.0065
+* ROE: 0.0174
+* QoE: 3.4733
+* Accruals: -0.0160
+* 12M Momentum (ex-1M): 0.5489
+* Annualized Volatility: 0.2709
+
+#### Stock ID: stock_197 ####
+* ROA: 0.0533
+* ROE: 0.1260
+* QoE: 1.2572
+* Accruals: -0.0137
+* 12M Momentum (ex-1M): 0.4605
+* Annualized Volatility: 0.2150
+
+#### Stock ID: stock_430 ####
+* ROA: 0.0094
+* ROE: 0.0455
+* QoE: 3.0754
+* Accruals: -0.0194
+* 12M Momentum (ex-1M): 0.4196
+* Annualized Volatility: 0.2132
+
+#### Stock ID: stock_3 ####
+* ROA: 0.0109
+* ROE: 0.2571
+* QoE: 3.4894
+* Accruals: -0.0271
+* 12M Momentum (ex-1M): 0.3135
+* Annualized Volatility: 0.2096
+
+#### Stock ID: stock_332 ####
+* ROA: 0.0213
+* ROE: 0.0566
+* QoE: 2.1776
+* Accruals: -0.0251
+* 12M Momentum (ex-1M): 0.4438
+* Annualized Volatility: 0.2961
+
+#### Stock ID: stock_409 ####
+* ROA: 0.0041
+* ROE: 0.0103
+* QoE: 3.1372
+* Accruals: -0.0087
+* 12M Momentum (ex-1M): -0.0479
+* Annualized Volatility: 0.2929
+
+#### Stock ID: stock_206 ####
+* ROA: 0.0206
+* ROE: -0.1003
+* QoE: 1.9302
+* Accruals: -0.0192
+* 12M Momentum (ex-1M): 0.3957
+* Annualized Volatility: 0.1873
+
+#### Stock ID: stock_128 ####
+* ROA: 0.0011
+* ROE: 0.0022
+* QoE: 11.0663
+* Accruals: -0.0114
+* 12M Momentum (ex-1M): 0.4796
+* Annualized Volatility: 0.2481
+
+#### Stock ID: stock_322 ####
+* ROA: 0.0234
+* ROE: 0.0465
+* QoE: 1.5532
+* Accruals: -0.0130
+* 12M Momentum (ex-1M): 0.4857
+* Annualized Volatility: 0.3001
+
+#### Stock ID: stock_240 ####
+* ROA: 0.0148
+* ROE: 0.0365
+* QoE: 2.4013
+* Accruals: -0.0208
+* 12M Momentum (ex-1M): 0.4752
+* Annualized Volatility: 0.2422
+
+#### Stock ID: stock_119 ####
+* ROA: 0.0169
+* ROE: 0.0932
+* QoE: 1.0016
+* Accruals: -0.0000
+* 12M Momentum (ex-1M): 0.6162
+* Annualized Volatility: 0.3160
+
+#### Stock ID: stock_309 ####
+* ROA: 0.0034
+* ROE: 0.0250
+* QoE: -0.0388
+* Accruals: 0.0035
+* 12M Momentum (ex-1M): 0.5592
+* Annualized Volatility: 0.2551
+
+#### Stock ID: stock_19 ####
+* ROA: 0.0055
+* ROE: 0.0256
+* QoE: 2.9904
+* Accruals: -0.0109
+* 12M Momentum (ex-1M): 0.3980
+* Annualized Volatility: 0.1714
+
+#### Stock ID: stock_280 ####
+* ROA: 0.0223
+* ROE: -0.2412
+* QoE: 1.5068
+* Accruals: -0.0113
+* 12M Momentum (ex-1M): 0.2911
+* Annualized Volatility: 0.2121
+
+#### Stock ID: stock_361 ####
+* ROA: 0.0150
+* ROE: 0.0587
+* QoE: 1.6032
+* Accruals: -0.0091
+* 12M Momentum (ex-1M): 0.3642
+* Annualized Volatility: 0.1836
+
+#### Stock ID: stock_464 ####
+* ROA: 0.0027
+* ROE: 0.0276
+* QoE: 0.8224
+* Accruals: 0.0005
+* 12M Momentum (ex-1M): 0.4821
+* Annualized Volatility: 0.2593
+
+#### Stock ID: stock_100 ####
+* ROA: 0.0245
+* ROE: 0.0735
+* QoE: 1.8131
+* Accruals: -0.0199
+* 12M Momentum (ex-1M): 0.5081
+* Annualized Volatility: 0.1820
+
+#### Stock ID: stock_105 ####
+* ROA: 0.0269
+* ROE: 0.0594
+* QoE: 1.0850
+* Accruals: -0.0023
+* 12M Momentum (ex-1M): 0.4847
+* Annualized Volatility: 0.2666
+
+#### Stock ID: stock_426 ####
+* ROA: 0.0136
+* ROE: 0.0626
+* QoE: 0.6404
+* Accruals: 0.0049
+* 12M Momentum (ex-1M): 0.5172
+* Annualized Volatility: 0.3031
+
+#### Stock ID: stock_371 ####
+* ROA: 0.0121
+* ROE: 0.0501
+* QoE: 1.5980
+* Accruals: -0.0072
+* 12M Momentum (ex-1M): 0.4631
+* Annualized Volatility: 0.3186
+
+#### Stock ID: stock_378 ####
+* ROA: 0.0073
+* ROE: 0.0516
+* QoE: 0.8472
+* Accruals: 0.0011
+* 12M Momentum (ex-1M): 0.4716
+* Annualized Volatility: 0.2259
+
+#### Stock ID: stock_188 ####
+* ROA: 0.0230
+* ROE: 0.0681
+* QoE: 3.4389
+* Accruals: -0.0560
+* 12M Momentum (ex-1M): 0.2000
+* Annualized Volatility: 0.2244
+
+#### Stock ID: stock_233 ####
+* ROA: 0.0318
+* ROE: 0.0360
+* QoE: 1.2502
+* Accruals: -0.0080
+* 12M Momentum (ex-1M): 0.4469
+* Annualized Volatility: 0.2312
+
+#### Stock ID: stock_49 ####
+* ROA: 0.0093
+* ROE: 0.0844
+* QoE: -0.7228
+* Accruals: 0.0159
+* 12M Momentum (ex-1M): 0.6265
+* Annualized Volatility: 0.2339
+
+#### Stock ID: stock_253 ####
+* ROA: 0.0528
+* ROE: 0.6170
+* QoE: 1.0562
+* Accruals: -0.0030
+* 12M Momentum (ex-1M): 0.1781
+* Annualized Volatility: 0.1800
+
+#### Stock ID: stock_319 ####
+* ROA: 0.0028
+* ROE: 0.0083
+* QoE: 3.9673
+* Accruals: -0.0082
+* 12M Momentum (ex-1M): 0.4868
+* Annualized Volatility: 0.1561
+
+#### Stock ID: stock_127 ####
+* ROA: 0.0023
+* ROE: 0.0044
+* QoE: 11.9957
+* Accruals: -0.0258
+* 12M Momentum (ex-1M): 0.2912
+* Annualized Volatility: 0.2269
+
+#### Stock ID: stock_215 ####
+* ROA: 0.0326
+* ROE: 0.0701
+* QoE: 0.0000
+* Accruals: 0.0326
+* 12M Momentum (ex-1M): 0.4525
+* Annualized Volatility: 0.2842
+
+#### Stock ID: stock_416 ####
+* ROA: 0.0183
+* ROE: -0.0745
+* QoE: 1.2222
+* Accruals: -0.0041
+* 12M Momentum (ex-1M): 0.3177
+* Annualized Volatility: 0.2336
+
+#### Stock ID: stock_112 ####
+* ROA: 0.0479
+* ROE: 0.1045
+* QoE: 0.9842
+* Accruals: 0.0008
+* 12M Momentum (ex-1M): 0.4807
+* Annualized Volatility: 0.1911
+
+#### Stock ID: stock_176 ####
+* ROA: 0.0027
+* ROE: 0.0275
+* QoE: 3.2517
+* Accruals: -0.0060
+* 12M Momentum (ex-1M): 0.3996
+* Annualized Volatility: 0.2412
+
+#### Stock ID: stock_376 ####
+* ROA: 0.0031
+* ROE: 0.0262
+* QoE: 2.5735
+* Accruals: -0.0049
+* 12M Momentum (ex-1M): 0.3892
+* Annualized Volatility: 0.2473
+
+#### Stock ID: stock_131 ####
+* ROA: 0.0291
+* ROE: 0.0609
+* QoE: 1.1147
+* Accruals: -0.0033
+* 12M Momentum (ex-1M): 0.3537
+* Annualized Volatility: 0.2059
+
+#### Stock ID: stock_359 ####
+* ROA: 0.0026
+* ROE: 0.0267
+* QoE: 2.2060
+* Accruals: -0.0032
+* 12M Momentum (ex-1M): 0.4082
+* Annualized Volatility: 0.2312
+
+#### Stock ID: stock_313 ####
+* ROA: 0.0240
+* ROE: 0.4183
+* QoE: 0.3632
+* Accruals: 0.0153
+* 12M Momentum (ex-1M): 0.3279
+* Annualized Volatility: 0.4153
+
+#### Stock ID: stock_160 ####
+* ROA: 0.0145
+* ROE: 0.0463
+* QoE: 2.0475
+* Accruals: -0.0152
+* 12M Momentum (ex-1M): 0.2955
+* Annualized Volatility: 0.1587
+
+#### Stock ID: stock_231 ####
+* ROA: 0.0122
+* ROE: 0.0214
+* QoE: 1.8231
+* Accruals: -0.0100
+* 12M Momentum (ex-1M): 0.4052
+* Annualized Volatility: 0.2484
+
+#### Stock ID: stock_145 ####
+* ROA: 0.0068
+* ROE: 0.0319
+* QoE: 4.2842
+* Accruals: -0.0224
+* 12M Momentum (ex-1M): 0.2663
+* Annualized Volatility: 0.1762
+
+#### Stock ID: stock_30 ####
+* ROA: 0.0027
+* ROE: 0.0894
+* QoE: 5.9648
+* Accruals: -0.0136
+* 12M Momentum (ex-1M): 0.4721
+* Annualized Volatility: 0.1933
+
+#### Stock ID: stock_6 ####
+* ROA: 0.0134
+* ROE: 0.0444
+* QoE: 2.0425
+* Accruals: -0.0140
+* 12M Momentum (ex-1M): 0.4341
+* Annualized Volatility: 0.2239
+
+#### Stock ID: stock_190 ####
+* ROA: -0.0041
+* ROE: -0.0102
+* QoE: -5.9744
+* Accruals: -0.0288
+* 12M Momentum (ex-1M): 0.5626
+* Annualized Volatility: 0.2413
+
+#### Stock ID: stock_329 ####
+* ROA: 0.0662
+* ROE: 0.1005
+* QoE: 0.8345
+* Accruals: 0.0110
+* 12M Momentum (ex-1M): 0.3263
+* Annualized Volatility: 0.2325
+
+#### Stock ID: stock_278 ####
+* ROA: 0.0691
+* ROE: 0.4352
+* QoE: 1.5740
+* Accruals: -0.0397
+* 12M Momentum (ex-1M): 0.2567
+* Annualized Volatility: 0.1587
+
+#### Stock ID: stock_460 ####
+* ROA: 0.0013
+* ROE: 0.0037
+* QoE: 6.2741
+* Accruals: -0.0067
+* 12M Momentum (ex-1M): -0.1003
+* Annualized Volatility: 0.4151
+
+#### Stock ID: stock_252 ####
+* ROA: 0.0603
+* ROE: 0.2657
+* QoE: 1.0522
+* Accruals: -0.0031
+* 12M Momentum (ex-1M): 0.3676
+* Annualized Volatility: 0.3771
+
+#### Stock ID: stock_70 ####
+* ROA: 0.0013
+* ROE: 0.0154
+* QoE: -5.1495
+* Accruals: 0.0082
+* 12M Momentum (ex-1M): 0.4171
+* Annualized Volatility: 0.2534
+
+#### Stock ID: stock_336 ####
+* ROA: 0.0134
+* ROE: 0.0772
+* QoE: 1.4737
+* Accruals: -0.0063
+* 12M Momentum (ex-1M): 0.2636
+* Annualized Volatility: 0.2150
+
+#### Stock ID: stock_294 ####
+* ROA: 0.0220
+* ROE: 0.0396
+* QoE: 1.6529
+* Accruals: -0.0144
+* 12M Momentum (ex-1M): 0.2075
+* Annualized Volatility: 0.2319
+
+#### Stock ID: stock_412 ####
+* ROA: 0.0190
+* ROE: 0.0414
+* QoE: 1.7674
+* Accruals: -0.0146
+* 12M Momentum (ex-1M): 0.3185
+* Annualized Volatility: 0.1876
+
+#### Stock ID: stock_469 ####
+* ROA: 0.0091
+* ROE: 0.0433
+* QoE: 3.3935
+* Accruals: -0.0217
+* 12M Momentum (ex-1M): 0.3684
+* Annualized Volatility: 0.2080
+
+#### Stock ID: stock_479 ####
+* ROA: 0.0178
+* ROE: 0.0400
+* QoE: 2.1460
+* Accruals: -0.0204
+* 12M Momentum (ex-1M): 0.4084
+* Annualized Volatility: 0.2882
+
+#### Stock ID: stock_450 ####
+* ROA: 0.0145
+* ROE: 0.0263
+* QoE: 2.8661
+* Accruals: -0.0270
+* 12M Momentum (ex-1M): 0.2693
+* Annualized Volatility: 0.2364
+
+#### Stock ID: stock_13 ####
+* ROA: 0.0105
+* ROE: 0.0381
+* QoE: 1.9671
+* Accruals: -0.0102
+* 12M Momentum (ex-1M): 0.3401
+* Annualized Volatility: 0.1706
+
+#### Stock ID: stock_158 ####
+* ROA: 0.0101
+* ROE: 0.0423
+* QoE: 2.4054
+* Accruals: -0.0142
+* 12M Momentum (ex-1M): 0.4876
+* Annualized Volatility: 0.1901
+
+#### Stock ID: stock_173 ####
+* ROA: 0.0294
+* ROE: 0.0528
+* QoE: 1.4913
+* Accruals: -0.0145
+* 12M Momentum (ex-1M): 0.3121
+* Annualized Volatility: 0.2051
+
+#### Stock ID: stock_288 ####
+* ROA: 0.0019
+* ROE: 0.0431
+* QoE: 3.1066
+* Accruals: -0.0040
+* 12M Momentum (ex-1M): 0.3837
+* Annualized Volatility: 0.2145
+
+#### Stock ID: stock_29 ####
+* ROA: 0.0311
+* ROE: 0.3760
+* QoE: 1.2618
+* Accruals: -0.0082
+* 12M Momentum (ex-1M): -0.0228
+* Annualized Volatility: 0.2322
+
+#### Stock ID: stock_314 ####
+* ROA: 0.0100
+* ROE: 0.0276
+* QoE: 0.7974
+* Accruals: 0.0020
+* 12M Momentum (ex-1M): 0.4282
+* Annualized Volatility: 0.1813
+
+#### Stock ID: stock_32 ####
+* ROA: 0.0262
+* ROE: 0.0591
+* QoE: 1.6944
+* Accruals: -0.0182
+* 12M Momentum (ex-1M): 0.3866
+* Annualized Volatility: 0.2685
+
+#### Stock ID: stock_17 ####
+* ROA: 0.0027
+* ROE: 0.0102
+* QoE: 3.7015
+* Accruals: -0.0073
+* 12M Momentum (ex-1M): 0.1527
+* Annualized Volatility: 0.2040
+
+#### Stock ID: stock_445 ####
+* ROA: 0.0249
+* ROE: 0.0825
+* QoE: 1.7006
+* Accruals: -0.0175
+* 12M Momentum (ex-1M): 0.3869
+* Annualized Volatility: 0.3261
+
+#### Stock ID: stock_118 ####
+* ROA: 0.0094
+* ROE: 0.0339
+* QoE: 1.6478
+* Accruals: -0.0061
+* 12M Momentum (ex-1M): 0.3190
+* Annualized Volatility: 0.2244
+
+#### Stock ID: stock_451 ####
+* ROA: 0.0482
+* ROE: 0.7223
+* QoE: 1.3458
+* Accruals: -0.0167
+* 12M Momentum (ex-1M): 0.2632
+* Annualized Volatility: 0.1735
+
+#### Stock ID: stock_63 ####
+* ROA: 0.0204
+* ROE: 0.0469
+* QoE: 1.3185
+* Accruals: -0.0065
+* 12M Momentum (ex-1M): 0.2630
+* Annualized Volatility: 0.2586
+
+#### Stock ID: stock_123 ####
+* ROA: 0.0057
+* ROE: 0.0509
+* QoE: 2.3264
+* Accruals: -0.0076
+* 12M Momentum (ex-1M): 0.4508
+* Annualized Volatility: 0.2923
+
+#### Stock ID: stock_82 ####
+* ROA: 0.0017
+* ROE: 0.0153
+* QoE: 0.3403
+* Accruals: 0.0011
+* 12M Momentum (ex-1M): 0.4075
+* Annualized Volatility: 0.2802
+
+#### Stock ID: stock_245 ####
+* ROA: 0.0233
+* ROE: 0.0977
+* QoE: 1.5068
+* Accruals: -0.0118
+* 12M Momentum (ex-1M): 0.3163
+* Annualized Volatility: 0.1892
+
+#### Stock ID: stock_35 ####
+* ROA: 0.0069
+* ROE: 0.0523
+* QoE: 2.9534
+* Accruals: -0.0134
+* 12M Momentum (ex-1M): 0.3453
+* Annualized Volatility: 0.1842
+
+#### Stock ID: stock_199 ####
+* ROA: 0.0309
+* ROE: 0.1704
+* QoE: 0.9969
+* Accruals: 0.0001
+* 12M Momentum (ex-1M): 0.2699
+* Annualized Volatility: 0.2677
+
+#### Stock ID: stock_398 ####
+* ROA: 0.0107
+* ROE: 0.0416
+* QoE: 2.3557
+* Accruals: -0.0145
+* 12M Momentum (ex-1M): 0.3175
+* Annualized Volatility: 0.1678
+
+#### Stock ID: stock_292 ####
+* ROA: 0.0169
+* ROE: 0.0409
+* QoE: 0.0000
+* Accruals: 0.0169
+* 12M Momentum (ex-1M): 0.3515
+* Annualized Volatility: 0.1900
+
+#### Stock ID: stock_234 ####
+* ROA: 0.0529
+* ROE: 0.3898
+* QoE: 1.4234
+* Accruals: -0.0224
+* 12M Momentum (ex-1M): 0.1743
+* Annualized Volatility: 0.2176
+
+#### Stock ID: stock_74 ####
+* ROA: 0.0286
+* ROE: 0.1270
+* QoE: 1.4485
+* Accruals: -0.0128
+* 12M Momentum (ex-1M): 0.3773
+* Annualized Volatility: 0.2499
+
+#### Stock ID: stock_366 ####
+* ROA: 0.0006
+* ROE: 0.0138
+* QoE: 2.4665
+* Accruals: -0.0009
+* 12M Momentum (ex-1M): 0.3613
+* Annualized Volatility: 0.2128
+
+#### Stock ID: stock_345 ####
+* ROA: 0.0225
+* ROE: 0.0521
+* QoE: 1.3231
+* Accruals: -0.0073
+* 12M Momentum (ex-1M): 0.2742
+* Annualized Volatility: 0.2361
+
+#### Stock ID: stock_316 ####
+* ROA: 0.0100
+* ROE: 0.0311
+* QoE: 2.3038
+* Accruals: -0.0130
+* 12M Momentum (ex-1M): 0.3430
+* Annualized Volatility: 0.2517
+
+#### Stock ID: stock_38 ####
+* ROA: 0.0493
+* ROE: 0.1044
+* QoE: 0.4908
+* Accruals: 0.0251
+* 12M Momentum (ex-1M): 0.3095
+* Annualized Volatility: 0.2203
+
+#### Stock ID: stock_133 ####
+* ROA: 0.0828
+* ROE: -0.0369
+* QoE: 1.1756
+* Accruals: -0.0145
+* 12M Momentum (ex-1M): 0.2698
+* Annualized Volatility: 0.2534
+
+#### Stock ID: stock_466 ####
+* ROA: 0.0219
+* ROE: 0.0953
+* QoE: 1.7868
+* Accruals: -0.0172
+* 12M Momentum (ex-1M): 0.3175
+* Annualized Volatility: 0.1718
+
+#### Stock ID: stock_442 ####
+* ROA: 0.0202
+* ROE: 0.0580
+* QoE: 2.3031
+* Accruals: -0.0264
+* 12M Momentum (ex-1M): 0.2024
+* Annualized Volatility: 0.2652
+
+#### Stock ID: stock_200 ####
+* ROA: 0.0026
+* ROE: 0.0250
+* QoE: -0.8472
+* Accruals: 0.0048
+* 12M Momentum (ex-1M): 0.3823
+* Annualized Volatility: 0.2502
+
+#### Stock ID: stock_149 ####
+* ROA: 0.0225
+* ROE: 0.0362
+* QoE: 1.0884
+* Accruals: -0.0020
+* 12M Momentum (ex-1M): 0.3237
+* Annualized Volatility: 0.2353
+
+#### Stock ID: stock_346 ####
+* ROA: 0.0044
+* ROE: 0.0214
+* QoE: 5.4076
+* Accruals: -0.0193
+* 12M Momentum (ex-1M): 0.2017
+* Annualized Volatility: 0.1884
+
+#### Stock ID: stock_415 ####
+* ROA: 0.0075
+* ROE: 0.0147
+* QoE: 0.0000
+* Accruals: 0.0075
+* 12M Momentum (ex-1M): 0.3670
+* Annualized Volatility: 0.3346
+
+#### Stock ID: stock_226 ####
+* ROA: 0.0059
+* ROE: 0.0109
+* QoE: 1.8376
+* Accruals: -0.0050
+* 12M Momentum (ex-1M): 0.0700
+* Annualized Volatility: 0.2736
+
+#### Stock ID: stock_209 ####
+* ROA: 0.0192
+* ROE: 0.0549
+* QoE: 1.4861
+* Accruals: -0.0093
+* 12M Momentum (ex-1M): 0.2449
+* Annualized Volatility: 0.3429
+
+#### Stock ID: stock_157 ####
+* ROA: 0.0094
+* ROE: 0.0209
+* QoE: 2.6701
+* Accruals: -0.0156
+* 12M Momentum (ex-1M): 0.2868
+* Annualized Volatility: 0.2076
+
+#### Stock ID: stock_455 ####
+* ROA: 0.0008
+* ROE: 0.0019
+* QoE: 18.3788
+* Accruals: -0.0132
+* 12M Momentum (ex-1M): 0.3195
+* Annualized Volatility: 0.2070
+
+#### Stock ID: stock_195 ####
+* ROA: 0.0427
+* ROE: 0.0532
+* QoE: 0.6463
+* Accruals: 0.0151
+* 12M Momentum (ex-1M): 0.3204
+* Annualized Volatility: 0.2201
+
+#### Stock ID: stock_461 ####
+* ROA: 0.0196
+* ROE: 0.0409
+* QoE: -0.0763
+* Accruals: 0.0211
+* 12M Momentum (ex-1M): 0.4561
+* Annualized Volatility: 0.3685
+
+#### Stock ID: stock_141 ####
+* ROA: 0.0333
+* ROE: 0.0859
+* QoE: 1.0682
+* Accruals: -0.0023
+* 12M Momentum (ex-1M): 0.2532
+* Annualized Volatility: 0.1711
+
+#### Stock ID: stock_237 ####
+* ROA: 0.0277
+* ROE: 0.0604
+* QoE: 0.6039
+* Accruals: 0.0110
+* 12M Momentum (ex-1M): 0.3672
+* Annualized Volatility: 0.2115
+
+#### Stock ID: stock_14 ####
+* ROA: 0.0096
+* ROE: 0.0359
+* QoE: 2.2642
+* Accruals: -0.0121
+* 12M Momentum (ex-1M): 0.2793
+* Annualized Volatility: 0.1851
+
+#### Stock ID: stock_44 ####
+* ROA: 0.0175
+* ROE: 0.0313
+* QoE: 1.3051
+* Accruals: -0.0053
+* 12M Momentum (ex-1M): 0.2888
+* Annualized Volatility: 0.1822
+
+#### Stock ID: stock_96 ####
+* ROA: 0.0037
+* ROE: 0.0282
+* QoE: 3.6342
+* Accruals: -0.0096
+* 12M Momentum (ex-1M): 0.3734
+* Annualized Volatility: 0.2687
+
+#### Stock ID: stock_269 ####
+* ROA: 0.0129
+* ROE: 0.0423
+* QoE: 1.1898
+* Accruals: -0.0025
+* 12M Momentum (ex-1M): 0.2770
+* Annualized Volatility: 0.1769
+
+#### Stock ID: stock_385 ####
+* ROA: 0.0178
+* ROE: 0.0504
+* QoE: 1.7732
+* Accruals: -0.0137
+* 12M Momentum (ex-1M): 0.3350
+* Annualized Volatility: 0.1447
+
+#### Stock ID: stock_365 ####
+* ROA: 0.0053
+* ROE: 0.0152
+* QoE: 3.6495
+* Accruals: -0.0140
+* 12M Momentum (ex-1M): 0.3237
+* Annualized Volatility: 0.1591
+
+#### Stock ID: stock_420 ####
+* ROA: 0.0028
+* ROE: 0.0219
+* QoE: 1.0638
+* Accruals: -0.0002
+* 12M Momentum (ex-1M): 0.2991
+* Annualized Volatility: 0.2470
+
+#### Stock ID: stock_43 ####
+* ROA: 0.0053
+* ROE: 0.0110
+* QoE: 2.4675
+* Accruals: -0.0078
+* 12M Momentum (ex-1M): 0.3402
+* Annualized Volatility: 0.1497
+
+#### Stock ID: stock_400 ####
+* ROA: 0.0143
+* ROE: 0.1433
+* QoE: 1.8758
+* Accruals: -0.0125
+* 12M Momentum (ex-1M): 0.3378
+* Annualized Volatility: 0.2120
+
+#### Stock ID: stock_291 ####
+* ROA: 0.0122
+* ROE: 0.0206
+* QoE: 1.9716
+* Accruals: -0.0118
+* 12M Momentum (ex-1M): 0.2785
+* Annualized Volatility: 0.3232
+
+#### Stock ID: stock_4 ####
+* ROA: 0.0617
+* ROE: 0.1612
+* QoE: 0.7880
+* Accruals: 0.0131
+* 12M Momentum (ex-1M): 0.1258
+* Annualized Volatility: 0.3012
+
+#### Stock ID: stock_353 ####
+* ROA: 0.0236
+* ROE: 0.0541
+* QoE: 1.0652
+* Accruals: -0.0015
+* 12M Momentum (ex-1M): 0.4216
+* Annualized Volatility: 0.2319
+
+#### Stock ID: stock_395 ####
+* ROA: 0.0316
+* ROE: 0.0457
+* QoE: 1.0920
+* Accruals: -0.0029
+* 12M Momentum (ex-1M): 0.3444
+* Annualized Volatility: 0.2065
+
+#### Stock ID: stock_447 ####
+* ROA: 0.0563
+* ROE: 0.1359
+* QoE: 1.2531
+* Accruals: -0.0142
+* 12M Momentum (ex-1M): 0.2195
+* Annualized Volatility: 0.1688
+
+#### Stock ID: stock_354 ####
+* ROA: 0.0412
+* ROE: 0.0604
+* QoE: 0.6533
+* Accruals: 0.0143
+* 12M Momentum (ex-1M): 0.3206
+* Annualized Volatility: 0.3028
+
+#### Stock ID: stock_379 ####
+* ROA: 0.0217
+* ROE: 0.0606
+* QoE: 0.6572
+* Accruals: 0.0075
+* 12M Momentum (ex-1M): 0.4703
+* Annualized Volatility: 0.2841
+
+#### Stock ID: stock_65 ####
+* ROA: 0.0129
+* ROE: 0.0704
+* QoE: 4.6168
+* Accruals: -0.0468
+* 12M Momentum (ex-1M): 0.1395
+* Annualized Volatility: 0.2472
+
+#### Stock ID: stock_363 ####
+* ROA: 0.0373
+* ROE: 0.0877
+* QoE: 2.5180
+* Accruals: -0.0567
+* 12M Momentum (ex-1M): -0.0719
+* Annualized Volatility: 0.2822
+
+#### Stock ID: stock_475 ####
+* ROA: 0.0186
+* ROE: 0.0312
+* QoE: 2.0405
+* Accruals: -0.0194
+* 12M Momentum (ex-1M): 0.2201
+* Annualized Volatility: 0.1924
+
+#### Stock ID: stock_271 ####
+* ROA: 0.0572
+* ROE: 0.1318
+* QoE: 1.4049
+* Accruals: -0.0231
+* 12M Momentum (ex-1M): 0.1050
+* Annualized Volatility: 0.3969
+
+#### Stock ID: stock_285 ####
+* ROA: 0.0339
+* ROE: 0.1313
+* QoE: 1.3165
+* Accruals: -0.0107
+* 12M Momentum (ex-1M): 0.3183
+* Annualized Volatility: 0.1921
+
+#### Stock ID: stock_474 ####
+* ROA: 0.0098
+* ROE: 0.0352
+* QoE: 2.5469
+* Accruals: -0.0152
+* 12M Momentum (ex-1M): 0.2423
+* Annualized Volatility: 0.2088
+
+#### Stock ID: stock_325 ####
+* ROA: 0.0332
+* ROE: 0.3352
+* QoE: 0.3512
+* Accruals: 0.0215
+* 12M Momentum (ex-1M): 0.3247
+* Annualized Volatility: 0.2587
+
+#### Stock ID: stock_11 ####
+* ROA: 0.0193
+* ROE: 0.1788
+* QoE: 0.8621
+* Accruals: 0.0027
+* 12M Momentum (ex-1M): 0.3394
+* Annualized Volatility: 0.1521
+
+#### Stock ID: stock_81 ####
+* ROA: 0.0199
+* ROE: 0.0357
+* QoE: 3.3732
+* Accruals: -0.0473
+* 12M Momentum (ex-1M): 0.1346
+* Annualized Volatility: 0.2609
+
+#### Stock ID: stock_125 ####
+* ROA: 0.0355
+* ROE: 0.0497
+* QoE: 1.5284
+* Accruals: -0.0188
+* 12M Momentum (ex-1M): 0.1174
+* Annualized Volatility: 0.3063
+
+#### Stock ID: stock_168 ####
+* ROA: 0.0629
+* ROE: 0.0829
+* QoE: 0.9960
+* Accruals: 0.0003
+* 12M Momentum (ex-1M): 0.2588
+* Annualized Volatility: 0.2150
+
+#### Stock ID: stock_402 ####
+* ROA: 0.0069
+* ROE: 0.0181
+* QoE: 1.5747
+* Accruals: -0.0040
+* 12M Momentum (ex-1M): 0.2701
+* Annualized Volatility: 0.1820
+
+#### Stock ID: stock_75 ####
+* ROA: 0.0093
+* ROE: 0.0331
+* QoE: 1.8580
+* Accruals: -0.0080
+* 12M Momentum (ex-1M): 0.2904
+* Annualized Volatility: 0.1721
+
+#### Stock ID: stock_91 ####
+* ROA: 0.0430
+* ROE: 0.1072
+* QoE: 1.1526
+* Accruals: -0.0066
+* 12M Momentum (ex-1M): 0.3829
+* Annualized Volatility: 0.2847
+
+#### Stock ID: stock_154 ####
+* ROA: 0.0069
+* ROE: 0.0126
+* QoE: 2.7984
+* Accruals: -0.0123
+* 12M Momentum (ex-1M): 0.2911
+* Annualized Volatility: 0.1932
+
+#### Stock ID: stock_18 ####
+* ROA: 0.0038
+* ROE: 0.0255
+* QoE: 3.2623
+* Accruals: -0.0086
+* 12M Momentum (ex-1M): 0.3544
+* Annualized Volatility: 0.1904
+
+#### Stock ID: stock_267 ####
+* ROA: 0.0128
+* ROE: 0.0678
+* QoE: 3.8255
+* Accruals: -0.0363
+* 12M Momentum (ex-1M): 0.3403
+* Annualized Volatility: 0.2926
+
+#### Stock ID: stock_64 ####
+* ROA: 0.0123
+* ROE: 0.0374
+* QoE: 0.8467
+* Accruals: 0.0019
+* 12M Momentum (ex-1M): 0.2835
+* Annualized Volatility: 0.1794
+
+#### Stock ID: stock_222 ####
+* ROA: 0.0019
+* ROE: 0.0039
+* QoE: 6.3103
+* Accruals: -0.0103
+* 12M Momentum (ex-1M): 0.2191
+* Annualized Volatility: 0.2348
+
+#### Stock ID: stock_257 ####
+* ROA: 0.0099
+* ROE: 0.0479
+* QoE: 1.4984
+* Accruals: -0.0049
+* 12M Momentum (ex-1M): 0.3070
+* Annualized Volatility: 0.2080
+
+#### Stock ID: stock_25 ####
+* ROA: 0.0503
+* ROE: 0.0911
+* QoE: 1.4876
+* Accruals: -0.0245
+* 12M Momentum (ex-1M): 0.2567
+* Annualized Volatility: 0.3863
+
+#### Stock ID: stock_135 ####
+* ROA: 0.0070
+* ROE: 0.0255
+* QoE: 2.7510
+* Accruals: -0.0122
+* 12M Momentum (ex-1M): 0.2548
+* Annualized Volatility: 0.1640
+
+#### Stock ID: stock_235 ####
+* ROA: 0.0733
+* ROE: 0.3420
+* QoE: 0.7681
+* Accruals: 0.0170
+* 12M Momentum (ex-1M): 0.0774
+* Annualized Volatility: 0.1546
+
+#### Stock ID: stock_423 ####
+* ROA: 0.0400
+* ROE: 0.1587
+* QoE: 0.8065
+* Accruals: 0.0077
+* 12M Momentum (ex-1M): 0.3582
+* Annualized Volatility: 0.1705
+
+#### Stock ID: stock_185 ####
+* ROA: 0.0139
+* ROE: 0.0552
+* QoE: 1.5702
+* Accruals: -0.0079
+* 12M Momentum (ex-1M): 0.1239
+* Annualized Volatility: 0.2301
+
+#### Stock ID: stock_103 ####
+* ROA: 0.0408
+* ROE: 0.0457
+* QoE: 1.3319
+* Accruals: -0.0136
+* 12M Momentum (ex-1M): 0.2554
+* Annualized Volatility: 0.2129
+
+#### Stock ID: stock_404 ####
+* ROA: 0.0203
+* ROE: 0.0350
+* QoE: 2.3910
+* Accruals: -0.0282
+* 12M Momentum (ex-1M): 0.1591
+* Annualized Volatility: 0.2918
+
+#### Stock ID: stock_440 ####
+* ROA: 0.0020
+* ROE: 0.0049
+* QoE: 10.1894
+* Accruals: -0.0187
+* 12M Momentum (ex-1M): 0.2494
+* Annualized Volatility: 0.1880
+
+#### Stock ID: stock_277 ####
+* ROA: 0.0201
+* ROE: 0.2033
+* QoE: -1.8146
+* Accruals: 0.0566
+* 12M Momentum (ex-1M): 0.5029
+* Annualized Volatility: 0.2515
+
+#### Stock ID: stock_186 ####
+* ROA: 0.0104
+* ROE: 0.0767
+* QoE: 0.9814
+* Accruals: 0.0002
+* 12M Momentum (ex-1M): 0.3201
+* Annualized Volatility: 0.2419
+
+#### Stock ID: stock_219 ####
+* ROA: 0.0049
+* ROE: 0.0241
+* QoE: 1.3668
+* Accruals: -0.0018
+* 12M Momentum (ex-1M): 0.2713
+* Annualized Volatility: 0.1587
+
+#### Stock ID: stock_436 ####
+* ROA: 0.0386
+* ROE: 0.0789
+* QoE: 1.2717
+* Accruals: -0.0105
+* 12M Momentum (ex-1M): 0.2121
+* Annualized Volatility: 0.2729
+
+#### Stock ID: stock_452 ####
+* ROA: 0.1377
+* ROE: -0.1059
+* QoE: 1.2588
+* Accruals: -0.0356
+* 12M Momentum (ex-1M): -0.0912
+* Annualized Volatility: 0.1915
+
+#### Stock ID: stock_121 ####
+* ROA: 0.0713
+* ROE: 0.1090
+* QoE: -0.3737
+* Accruals: 0.0980
+* 12M Momentum (ex-1M): 0.4673
+* Annualized Volatility: 0.3359
+
+#### Stock ID: stock_139 ####
+* ROA: 0.0224
+* ROE: 0.0397
+* QoE: 0.7959
+* Accruals: 0.0046
+* 12M Momentum (ex-1M): 0.2026
+* Annualized Volatility: 0.1807
+
+#### Stock ID: stock_279 ####
+* ROA: 0.0098
+* ROE: 0.0187
+* QoE: 2.6871
+* Accruals: -0.0165
+* 12M Momentum (ex-1M): 0.2737
+* Annualized Volatility: 0.2001
+
+#### Stock ID: stock_397 ####
+* ROA: 0.0852
+* ROE: 0.1235
+* QoE: 0.5052
+* Accruals: 0.0422
+* 12M Momentum (ex-1M): 0.1051
+* Annualized Volatility: 0.3427
+
+#### Stock ID: stock_122 ####
+* ROA: 0.0143
+* ROE: -0.5365
+* QoE: 1.3217
+* Accruals: -0.0046
+* 12M Momentum (ex-1M): 0.5568
+* Annualized Volatility: 0.4472
+
+#### Stock ID: stock_273 ####
+* ROA: 0.0019
+* ROE: 0.0064
+* QoE: 1.7015
+* Accruals: -0.0013
+* 12M Momentum (ex-1M): 0.2540
+* Annualized Volatility: 0.3330
+
+#### Stock ID: stock_259 ####
+* ROA: 0.0048
+* ROE: 0.0220
+* QoE: 2.3292
+* Accruals: -0.0064
+* 12M Momentum (ex-1M): 0.2503
+* Annualized Volatility: 0.1664
+
+#### Stock ID: stock_456 ####
+* ROA: 0.0087
+* ROE: 0.0338
+* QoE: 2.9979
+* Accruals: -0.0173
+* 12M Momentum (ex-1M): 0.2496
+* Annualized Volatility: 0.2098
+
+#### Stock ID: stock_250 ####
+* ROA: 0.0068
+* ROE: 0.0127
+* QoE: 2.1762
+* Accruals: -0.0079
+* 12M Momentum (ex-1M): 0.2429
+* Annualized Volatility: 0.2068
+
+#### Stock ID: stock_360 ####
+* ROA: 0.0216
+* ROE: 0.0399
+* QoE: 1.7808
+* Accruals: -0.0168
+* 12M Momentum (ex-1M): 0.4944
+* Annualized Volatility: 0.2371
+
+#### Stock ID: stock_330 ####
+* ROA: 0.0070
+* ROE: 0.0130
+* QoE: 0.5378
+* Accruals: 0.0032
+* 12M Momentum (ex-1M): 0.2005
+* Annualized Volatility: 0.2036
+
+#### Stock ID: stock_305 ####
+* ROA: 0.0025
+* ROE: 0.0305
+* QoE: -5.4338
+* Accruals: 0.0163
+* 12M Momentum (ex-1M): 0.3852
+* Annualized Volatility: 0.2412
+
+#### Stock ID: stock_120 ####
+* ROA: 0.0116
+* ROE: 0.0543
+* QoE: 4.0900
+* Accruals: -0.0358
+* 12M Momentum (ex-1M): 0.1551
+* Annualized Volatility: 0.2289
+
+#### Stock ID: stock_432 ####
+* ROA: 0.0181
+* ROE: 0.0307
+* QoE: 2.8785
+* Accruals: -0.0341
+* 12M Momentum (ex-1M): 0.1140
+* Annualized Volatility: 0.5014
+
+#### Stock ID: stock_52 ####
+* ROA: 0.0021
+* ROE: 0.0233
+* QoE: -5.4055
+* Accruals: 0.0133
+* 12M Momentum (ex-1M): 0.4081
+* Annualized Volatility: 0.2198
+
+#### Stock ID: stock_50 ####
+* ROA: 0.0323
+* ROE: -0.1209
+* QoE: 1.4370
+* Accruals: -0.0141
+* 12M Momentum (ex-1M): 0.2194
+* Annualized Volatility: 0.2063
+
+#### Stock ID: stock_171 ####
+* ROA: 0.0087
+* ROE: 0.0280
+* QoE: 1.7787
+* Accruals: -0.0068
+* 12M Momentum (ex-1M): 0.2236
+* Annualized Volatility: 0.2190
+
+#### Stock ID: stock_16 ####
+* ROA: -0.0007
+* ROE: -0.0037
+* QoE: -13.6559
+* Accruals: -0.0106
+* 12M Momentum (ex-1M): 0.4629
+* Annualized Volatility: 0.1900
+
+#### Stock ID: stock_243 ####
+* ROA: 0.0097
+* ROE: 0.0199
+* QoE: 2.0756
+* Accruals: -0.0104
+* 12M Momentum (ex-1M): 0.0803
+* Annualized Volatility: 0.1241
+
+#### Stock ID: stock_114 ####
+* ROA: 0.0289
+* ROE: 0.0403
+* QoE: 1.4553
+* Accruals: -0.0131
+* 12M Momentum (ex-1M): 0.0830
+* Annualized Volatility: 0.2066
+
+#### Stock ID: stock_380 ####
+* ROA: 0.0431
+* ROE: 0.0599
+* QoE: 1.0456
+* Accruals: -0.0020
+* 12M Momentum (ex-1M): 0.3281
+* Annualized Volatility: 0.3040
+
+#### Stock ID: stock_446 ####
+* ROA: 0.0025
+* ROE: 0.0289
+* QoE: 0.5671
+* Accruals: 0.0011
+* 12M Momentum (ex-1M): 0.2556
+* Annualized Volatility: 0.2488
+
+#### Stock ID: stock_28 ####
+* ROA: 0.0230
+* ROE: 0.0356
+* QoE: 1.4318
+* Accruals: -0.0099
+* 12M Momentum (ex-1M): 0.1895
+* Annualized Volatility: 0.2008
+
+#### Stock ID: stock_301 ####
+* ROA: 0.0506
+* ROE: 0.0614
+* QoE: 1.6043
+* Accruals: -0.0306
+* 12M Momentum (ex-1M): 0.0566
+* Annualized Volatility: 0.4354
+
+#### Stock ID: stock_386 ####
+* ROA: 0.0089
+* ROE: 0.0234
+* QoE: 1.7140
+* Accruals: -0.0064
+* 12M Momentum (ex-1M): 0.4526
+* Annualized Volatility: 0.1688
+
+#### Stock ID: stock_458 ####
+* ROA: 0.0358
+* ROE: 0.1007
+* QoE: 1.2667
+* Accruals: -0.0095
+* 12M Momentum (ex-1M): 0.0473
+* Annualized Volatility: 0.2851
+
+#### Stock ID: stock_53 ####
+* ROA: 0.0105
+* ROE: 0.0292
+* QoE: 3.0964
+* Accruals: -0.0219
+* 12M Momentum (ex-1M): 0.0989
+* Annualized Volatility: 0.2245
+
+#### Stock ID: stock_109 ####
+* ROA: 0.0220
+* ROE: 0.0599
+* QoE: 1.3504
+* Accruals: -0.0077
+* 12M Momentum (ex-1M): 0.2022
+* Annualized Volatility: 0.1777
+
+#### Stock ID: stock_196 ####
+* ROA: 0.0017
+* ROE: 0.0246
+* QoE: -12.7291
+* Accruals: 0.0238
+* 12M Momentum (ex-1M): 0.5082
+* Annualized Volatility: 0.2304
+
+#### Stock ID: stock_218 ####
+* ROA: -0.0025
+* ROE: -0.0135
+* QoE: -8.7303
+* Accruals: -0.0239
+* 12M Momentum (ex-1M): 0.4348
+* Annualized Volatility: 0.2142
+
+#### Stock ID: stock_214 ####
+* ROA: 0.0354
+* ROE: 0.1061
+* QoE: 1.5578
+* Accruals: -0.0197
+* 12M Momentum (ex-1M): -0.0277
+* Annualized Volatility: 0.2309
+
+#### Stock ID: stock_12 ####
+* ROA: 0.0271
+* ROE: 0.1051
+* QoE: 0.7600
+* Accruals: 0.0065
+* 12M Momentum (ex-1M): 0.2292
+* Annualized Volatility: 0.2627
+
+#### Stock ID: stock_338 ####
+* ROA: 0.0212
+* ROE: 0.2213
+* QoE: 0.4138
+* Accruals: 0.0124
+* 12M Momentum (ex-1M): 0.5020
+* Annualized Volatility: 0.2649
+
+#### Stock ID: stock_247 ####
+* ROA: -0.0022
+* ROE: -0.0243
+* QoE: 2.9390
+* Accruals: 0.0042
+* 12M Momentum (ex-1M): 0.2571
+* Annualized Volatility: 0.2953
+
+#### Stock ID: stock_152 ####
+* ROA: 0.0306
+* ROE: 0.0384
+* QoE: 1.7746
+* Accruals: -0.0237
+* 12M Momentum (ex-1M): -0.0241
+* Annualized Volatility: 0.3106
+
+#### Stock ID: stock_441 ####
+* ROA: 0.0180
+* ROE: 0.0387
+* QoE: 1.2870
+* Accruals: -0.0052
+* 12M Momentum (ex-1M): 0.3533
+* Annualized Volatility: 0.2570
+
+#### Stock ID: stock_116 ####
+* ROA: 0.0173
+* ROE: 0.0286
+* QoE: 2.1560
+* Accruals: -0.0200
+* 12M Momentum (ex-1M): 0.1318
+* Annualized Volatility: 0.1922
+
+#### Stock ID: stock_151 ####
+* ROA: 0.0363
+* ROE: 0.0566
+* QoE: 2.1447
+* Accruals: -0.0415
+* 12M Momentum (ex-1M): 0.1341
+* Annualized Volatility: 0.2258
+
+#### Stock ID: stock_351 ####
+* ROA: 0.0313
+* ROE: 0.0759
+* QoE: 1.0866
+* Accruals: -0.0027
+* 12M Momentum (ex-1M): 0.2537
+* Annualized Volatility: 0.1499
+
+#### Stock ID: stock_433 ####
+* ROA: 0.0096
+* ROE: 0.0193
+* QoE: 1.7283
+* Accruals: -0.0070
+* 12M Momentum (ex-1M): 0.2348
+* Annualized Volatility: 0.2110
+
+#### Stock ID: stock_263 ####
+* ROA: 0.0095
+* ROE: 0.0210
+* QoE: 1.9500
+* Accruals: -0.0091
+* 12M Momentum (ex-1M): 0.1932
+* Annualized Volatility: 0.1875
+
+#### Stock ID: stock_144 ####
+* ROA: 0.0091
+* ROE: 0.0332
+* QoE: 3.4145
+* Accruals: -0.0220
+* 12M Momentum (ex-1M): 0.1801
+* Annualized Volatility: 0.2289
+
+#### Stock ID: stock_193 ####
+* ROA: 0.0611
+* ROE: 0.0837
+* QoE: 0.0000
+* Accruals: 0.0611
+* 12M Momentum (ex-1M): 0.1868
+* Annualized Volatility: 0.2643
+
+#### Stock ID: stock_108 ####
+* ROA: -0.0022
+* ROE: -0.0054
+* QoE: -19.3875
+* Accruals: -0.0441
+* 12M Momentum (ex-1M): 0.5464
+* Annualized Volatility: 0.3953
+
+#### Stock ID: stock_148 ####
+* ROA: 0.0120
+* ROE: 0.0314
+* QoE: 2.2000
+* Accruals: -0.0143
+* 12M Momentum (ex-1M): 0.1950
+* Annualized Volatility: 0.2230
+
+#### Stock ID: stock_462 ####
+* ROA: 0.0053
+* ROE: 0.0194
+* QoE: 3.0324
+* Accruals: -0.0108
+* 12M Momentum (ex-1M): 0.2478
+* Annualized Volatility: 0.1685
+
+#### Stock ID: stock_326 ####
+* ROA: 0.0030
+* ROE: 0.0365
+* QoE: 1.3145
+* Accruals: -0.0009
+* 12M Momentum (ex-1M): 0.3416
+* Annualized Volatility: 0.2308
+
+#### Stock ID: stock_244 ####
+* ROA: 0.0031
+* ROE: 0.0373
+* QoE: -5.7436
+* Accruals: 0.0207
+* 12M Momentum (ex-1M): 0.4376
+* Annualized Volatility: 0.2122
+
+#### Stock ID: stock_78 ####
+* ROA: 0.0260
+* ROE: 0.0522
+* QoE: 1.7219
+* Accruals: -0.0188
+* 12M Momentum (ex-1M): 0.0683
+* Annualized Volatility: 0.3242
+
+#### Stock ID: stock_306 ####
+* ROA: 0.0519
+* ROE: -0.3740
+* QoE: 1.5009
+* Accruals: -0.0260
+* 12M Momentum (ex-1M): 0.1305
+* Annualized Volatility: 0.2280
+
+#### Stock ID: stock_268 ####
+* ROA: 0.0292
+* ROE: 0.2254
+* QoE: 1.5022
+* Accruals: -0.0147
+* 12M Momentum (ex-1M): 0.1934
+* Annualized Volatility: 0.1692
+
+#### Stock ID: stock_143 ####
+* ROA: 0.0114
+* ROE: 0.0280
+* QoE: 3.3935
+* Accruals: -0.0274
+* 12M Momentum (ex-1M): 0.0936
+* Annualized Volatility: 0.2783
+
+#### Stock ID: stock_166 ####
+* ROA: 0.0031
+* ROE: 0.0201
+* QoE: 6.1682
+* Accruals: -0.0161
+* 12M Momentum (ex-1M): 0.1881
+* Annualized Volatility: 0.3097
+
+#### Stock ID: stock_401 ####
+* ROA: 0.0161
+* ROE: 0.0253
+* QoE: 1.4897
+* Accruals: -0.0079
+* 12M Momentum (ex-1M): 0.1954
+* Annualized Volatility: 0.1592
+
+#### Stock ID: stock_340 ####
+* ROA: 0.0526
+* ROE: -0.1130
+* QoE: 0.7296
+* Accruals: 0.0142
+* 12M Momentum (ex-1M): 0.1835
+* Annualized Volatility: 0.1798
+
+#### Stock ID: stock_333 ####
+* ROA: 0.0569
+* ROE: 0.0739
+* QoE: 1.4469
+* Accruals: -0.0254
+* 12M Momentum (ex-1M): 0.1411
+* Annualized Volatility: 0.3036
+
+#### Stock ID: stock_183 ####
+* ROA: 0.0162
+* ROE: 0.0405
+* QoE: 1.5215
+* Accruals: -0.0085
+* 12M Momentum (ex-1M): 0.1270
+* Annualized Volatility: 0.1741
+
+#### Stock ID: stock_24 ####
+* ROA: 0.0350
+* ROE: 0.1109
+* QoE: 1.3312
+* Accruals: -0.0116
+* 12M Momentum (ex-1M): 0.1242
+* Annualized Volatility: 0.1995
+
+#### Stock ID: stock_429 ####
+* ROA: 0.0440
+* ROE: 0.0538
+* QoE: 1.0821
+* Accruals: -0.0036
+* 12M Momentum (ex-1M): 0.1889
+* Annualized Volatility: 0.2302
+
+#### Stock ID: stock_392 ####
+* ROA: 0.0336
+* ROE: 0.1940
+* QoE: 1.3330
+* Accruals: -0.0112
+* 12M Momentum (ex-1M): 0.2756
+* Annualized Volatility: 0.2117
+
+#### Stock ID: stock_439 ####
+* ROA: 0.0554
+* ROE: 0.1579
+* QoE: 0.8235
+* Accruals: 0.0098
+* 12M Momentum (ex-1M): 0.0415
+* Annualized Volatility: 0.3361
+
+#### Stock ID: stock_382 ####
+* ROA: 0.0486
+* ROE: 0.1039
+* QoE: 1.0733
+* Accruals: -0.0036
+* 12M Momentum (ex-1M): 0.1820
+* Annualized Volatility: 0.2067
+
+#### Stock ID: stock_265 ####
+* ROA: 0.0188
+* ROE: 0.0382
+* QoE: 1.7619
+* Accruals: -0.0143
+* 12M Momentum (ex-1M): 0.1327
+* Annualized Volatility: 0.1450
+
+#### Stock ID: stock_477 ####
+* ROA: 0.0591
+* ROE: -0.0498
+* QoE: 1.2330
+* Accruals: -0.0138
+* 12M Momentum (ex-1M): 0.0792
+* Annualized Volatility: 0.1613
+
+#### Stock ID: stock_435 ####
+* ROA: -0.0280
+* ROE: -0.0630
+* QoE: 0.3513
+* Accruals: -0.0181
+* 12M Momentum (ex-1M): 0.1892
+* Annualized Volatility: 0.2208
+
+#### Stock ID: stock_374 ####
+* ROA: 0.0082
+* ROE: 0.0146
+* QoE: 2.2430
+* Accruals: -0.0102
+* 12M Momentum (ex-1M): 0.1637
+* Annualized Volatility: 0.1722
+
+#### Stock ID: stock_239 ####
+* ROA: 0.0056
+* ROE: 0.0628
+* QoE: 3.1200
+* Accruals: -0.0119
+* 12M Momentum (ex-1M): 0.2717
+* Annualized Volatility: 0.2958
+
+#### Stock ID: stock_189 ####
+* ROA: 0.0238
+* ROE: 0.0842
+* QoE: 1.4459
+* Accruals: -0.0106
+* 12M Momentum (ex-1M): 0.0539
+* Annualized Volatility: 0.1856
+
+#### Stock ID: stock_93 ####
+* ROA: 0.0073
+* ROE: 0.0293
+* QoE: 1.2016
+* Accruals: -0.0015
+* 12M Momentum (ex-1M): 0.2404
+* Annualized Volatility: 0.1628
+
+#### Stock ID: stock_358 ####
+* ROA: 0.0461
+* ROE: -0.3996
+* QoE: 1.0844
+* Accruals: -0.0039
+* 12M Momentum (ex-1M): 0.4108
+* Annualized Volatility: 0.1813
+
+#### Stock ID: stock_5 ####
+* ROA: 0.0221
+* ROE: 0.0411
+* QoE: 1.6434
+* Accruals: -0.0142
+* 12M Momentum (ex-1M): 0.1007
+* Annualized Volatility: 0.1792
+
+#### Stock ID: stock_162 ####
+* ROA: 0.0067
+* ROE: 0.0266
+* QoE: 2.3890
+* Accruals: -0.0093
+* 12M Momentum (ex-1M): 0.1479
+* Annualized Volatility: 0.1742
+
+#### Stock ID: stock_208 ####
+* ROA: 0.0192
+* ROE: 0.0786
+* QoE: 1.4133
+* Accruals: -0.0079
+* 12M Momentum (ex-1M): 0.1343
+* Annualized Volatility: 0.1798
+
+#### Stock ID: stock_182 ####
+* ROA: 0.0127
+* ROE: 0.0210
+* QoE: 2.0713
+* Accruals: -0.0136
+* 12M Momentum (ex-1M): 0.1083
+* Annualized Volatility: 0.2088
+
+#### Stock ID: stock_90 ####
+* ROA: 0.0066
+* ROE: 0.0324
+* QoE: 1.0988
+* Accruals: -0.0007
+* 12M Momentum (ex-1M): 0.1488
+* Annualized Volatility: 0.1657
+
+#### Stock ID: stock_36 ####
+* ROA: 0.0381
+* ROE: 0.0627
+* QoE: 1.6311
+* Accruals: -0.0240
+* 12M Momentum (ex-1M): -0.0438
+* Annualized Volatility: 0.2256
+
+#### Stock ID: stock_205 ####
+* ROA: 0.0091
+* ROE: 0.0240
+* QoE: 2.1089
+* Accruals: -0.0101
+* 12M Momentum (ex-1M): 0.0539
+* Annualized Volatility: 0.2242
+
+#### Stock ID: stock_406 ####
+* ROA: 0.0383
+* ROE: -0.2346
+* QoE: 0.3115
+* Accruals: 0.0263
+* 12M Momentum (ex-1M): 0.2262
+* Annualized Volatility: 0.2986
+
+#### Stock ID: stock_134 ####
+* ROA: 0.0172
+* ROE: 0.1039
+* QoE: 1.8066
+* Accruals: -0.0139
+* 12M Momentum (ex-1M): 0.0958
+* Annualized Volatility: 0.2320
+
+#### Stock ID: stock_381 ####
+* ROA: 0.0213
+* ROE: 0.0651
+* QoE: 1.8080
+* Accruals: -0.0172
+* 12M Momentum (ex-1M): 0.0733
+* Annualized Volatility: 0.2758
+
+#### Stock ID: stock_261 ####
+* ROA: 0.0265
+* ROE: 0.0391
+* QoE: 0.0000
+* Accruals: 0.0265
+* 12M Momentum (ex-1M): 0.1496
+* Annualized Volatility: 0.3121
+
+#### Stock ID: stock_113 ####
+* ROA: 0.0125
+* ROE: 0.0193
+* QoE: 2.9960
+* Accruals: -0.0250
+* 12M Momentum (ex-1M): 0.0802
+* Annualized Volatility: 0.2353
+
+#### Stock ID: stock_153 ####
+* ROA: 0.0084
+* ROE: 0.0218
+* QoE: 2.5522
+* Accruals: -0.0130
+* 12M Momentum (ex-1M): 0.1831
+* Annualized Volatility: 0.2262
+
+#### Stock ID: stock_372 ####
+* ROA: 0.0529
+* ROE: 0.1111
+* QoE: 0.9065
+* Accruals: 0.0049
+* 12M Momentum (ex-1M): 0.1524
+* Annualized Volatility: 0.3545
+
+#### Stock ID: stock_298 ####
+* ROA: 0.0207
+* ROE: 0.0683
+* QoE: 2.6779
+* Accruals: -0.0347
+* 12M Momentum (ex-1M): -0.2511
+* Annualized Volatility: 0.3016
+
+#### Stock ID: stock_339 ####
+* ROA: 0.0457
+* ROE: -0.4624
+* QoE: 1.1601
+* Accruals: -0.0073
+* 12M Momentum (ex-1M): 0.3076
+* Annualized Volatility: 0.1924
+
+#### Stock ID: stock_130 ####
+* ROA: 0.0043
+* ROE: 0.0093
+* QoE: 3.7055
+* Accruals: -0.0116
+* 12M Momentum (ex-1M): 0.1310
+* Annualized Volatility: 0.2318
+
+#### Stock ID: stock_367 ####
+* ROA: 0.0217
+* ROE: 0.0443
+* QoE: 1.8562
+* Accruals: -0.0186
+* 12M Momentum (ex-1M): 0.1755
+* Annualized Volatility: 0.2334
+
+#### Stock ID: stock_476 ####
+* ROA: 0.0135
+* ROE: 0.0205
+* QoE: 1.4332
+* Accruals: -0.0059
+* 12M Momentum (ex-1M): 0.1271
+* Annualized Volatility: 0.2134
+
+#### Stock ID: stock_179 ####
+* ROA: 0.0072
+* ROE: 0.0181
+* QoE: 2.3639
+* Accruals: -0.0098
+* 12M Momentum (ex-1M): 0.1678
+* Annualized Volatility: 0.1768
+
+#### Stock ID: stock_47 ####
+* ROA: 0.0116
+* ROE: 0.0338
+* QoE: 1.9400
+* Accruals: -0.0109
+* 12M Momentum (ex-1M): 0.0613
+* Annualized Volatility: 0.1991
+
+#### Stock ID: stock_344 ####
+* ROA: 0.0392
+* ROE: 0.1053
+* QoE: 0.7136
+* Accruals: 0.0112
+* 12M Momentum (ex-1M): 0.2649
+* Annualized Volatility: 0.1833
+
+#### Stock ID: stock_417 ####
+* ROA: 0.0180
+* ROE: 0.0273
+* QoE: 0.9534
+* Accruals: 0.0008
+* 12M Momentum (ex-1M): 0.1484
+* Annualized Volatility: 0.2044
+
+#### Stock ID: stock_383 ####
+* ROA: 0.0117
+* ROE: 0.0199
+* QoE: 2.0533
+* Accruals: -0.0123
+* 12M Momentum (ex-1M): 0.0608
+* Annualized Volatility: 0.1734
+
+#### Stock ID: stock_324 ####
+* ROA: 0.0254
+* ROE: 0.0797
+* QoE: 1.1156
+* Accruals: -0.0029
+* 12M Momentum (ex-1M): 0.0719
+* Annualized Volatility: 0.2395
+
+#### Stock ID: stock_296 ####
+* ROA: 0.0461
+* ROE: 0.0642
+* QoE: 1.6672
+* Accruals: -0.0307
+* 12M Momentum (ex-1M): 0.0229
+* Annualized Volatility: 0.2102
+
+#### Stock ID: stock_317 ####
+* ROA: 0.0164
+* ROE: 0.0308
+* QoE: 1.7874
+* Accruals: -0.0129
+* 12M Momentum (ex-1M): 0.1003
+* Annualized Volatility: 0.3208
+
+#### Stock ID: stock_111 ####
+* ROA: 0.0208
+* ROE: 0.0691
+* QoE: 1.8859
+* Accruals: -0.0184
+* 12M Momentum (ex-1M): 0.0544
+* Annualized Volatility: 0.2034
+
+#### Stock ID: stock_236 ####
+* ROA: 0.0042
+* ROE: 0.0072
+* QoE: 3.8389
+* Accruals: -0.0118
+* 12M Momentum (ex-1M): 0.1213
+* Annualized Volatility: 0.2879
+
+#### Stock ID: stock_62 ####
+* ROA: 0.0900
+* ROE: -0.6890
+* QoE: 0.9428
+* Accruals: 0.0051
+* 12M Momentum (ex-1M): 0.6011
+* Annualized Volatility: 0.2388
+
+#### Stock ID: stock_348 ####
+* ROA: 0.0292
+* ROE: 0.1495
+* QoE: 1.6741
+* Accruals: -0.0196
+* 12M Momentum (ex-1M): -0.0151
+* Annualized Volatility: 0.1635
+
+#### Stock ID: stock_307 ####
+* ROA: 0.0472
+* ROE: 0.0857
+* QoE: 1.3857
+* Accruals: -0.0182
+* 12M Momentum (ex-1M): 0.1358
+* Annualized Volatility: 0.1993
+
+#### Stock ID: stock_88 ####
+* ROA: 0.0180
+* ROE: 0.4420
+* QoE: 2.2323
+* Accruals: -0.0222
+* 12M Momentum (ex-1M): 0.1963
+* Annualized Volatility: 0.1959
+
+#### Stock ID: stock_95 ####
+* ROA: 0.0045
+* ROE: 0.0183
+* QoE: 0.7047
+* Accruals: 0.0013
+* 12M Momentum (ex-1M): 0.1836
+* Annualized Volatility: 0.1995
+
+#### Stock ID: stock_211 ####
+* ROA: 0.0164
+* ROE: 0.0275
+* QoE: 1.8557
+* Accruals: -0.0140
+* 12M Momentum (ex-1M): 0.0146
+* Annualized Volatility: 0.2137
+
+#### Stock ID: stock_270 ####
+* ROA: 0.0379
+* ROE: -0.1264
+* QoE: 0.7659
+* Accruals: 0.0089
+* 12M Momentum (ex-1M): 0.2476
+* Annualized Volatility: 0.2210
+
+#### Stock ID: stock_9 ####
+* ROA: 0.0099
+* ROE: 0.0136
+* QoE: 2.1980
+* Accruals: -0.0119
+* 12M Momentum (ex-1M): 0.0705
+* Annualized Volatility: 0.3023
+
+#### Stock ID: stock_362 ####
+* ROA: 0.0256
+* ROE: 0.0693
+* QoE: 1.2710
+* Accruals: -0.0069
+* 12M Momentum (ex-1M): 0.2876
+* Annualized Volatility: 0.3452
+
+#### Stock ID: stock_221 ####
+* ROA: 0.0171
+* ROE: 0.0312
+* QoE: 1.7238
+* Accruals: -0.0124
+* 12M Momentum (ex-1M): 0.0645
+* Annualized Volatility: 0.2041
+
+#### Stock ID: stock_480 ####
+* ROA: 0.0475
+* ROE: 0.1303
+* QoE: 1.3944
+* Accruals: -0.0187
+* 12M Momentum (ex-1M): -0.0773
+* Annualized Volatility: 0.2425
+
+#### Stock ID: stock_85 ####
+* ROA: 0.0047
+* ROE: 0.0175
+* QoE: 0.0622
+* Accruals: 0.0044
+* 12M Momentum (ex-1M): 0.1293
+* Annualized Volatility: 0.2344
+
+#### Stock ID: stock_194 ####
+* ROA: 0.0112
+* ROE: 0.0481
+* QoE: 2.1375
+* Accruals: -0.0127
+* 12M Momentum (ex-1M): 0.0609
+* Annualized Volatility: 0.2254
+
+#### Stock ID: stock_165 ####
+* ROA: 0.0069
+* ROE: 0.0129
+* QoE: 2.4241
+* Accruals: -0.0098
+* 12M Momentum (ex-1M): 0.1060
+* Annualized Volatility: 0.2523
+
+#### Stock ID: stock_282 ####
+* ROA: 0.0402
+* ROE: -0.4358
+* QoE: 1.2132
+* Accruals: -0.0086
+* 12M Momentum (ex-1M): 0.0164
+* Annualized Volatility: 0.1782
+
+#### Stock ID: stock_287 ####
+* ROA: 0.0141
+* ROE: 0.0261
+* QoE: 0.7543
+* Accruals: 0.0035
+* 12M Momentum (ex-1M): 0.0770
+* Annualized Volatility: 0.1745
+
+#### Stock ID: stock_266 ####
+* ROA: 0.0123
+* ROE: 0.0306
+* QoE: 2.1990
+* Accruals: -0.0148
+* 12M Momentum (ex-1M): 0.0032
+* Annualized Volatility: 0.2290
+
+#### Stock ID: stock_419 ####
+* ROA: 0.0386
+* ROE: 0.0502
+* QoE: 1.1416
+* Accruals: -0.0055
+* 12M Momentum (ex-1M): 0.1901
+* Annualized Volatility: 0.3941
+
+#### Stock ID: stock_473 ####
+* ROA: -0.0023
+* ROE: 0.0301
+* QoE: -8.7143
+* Accruals: -0.0221
+* 12M Momentum (ex-1M): 0.0275
+* Annualized Volatility: 0.2964
+
+#### Stock ID: stock_418 ####
+* ROA: 0.0121
+* ROE: 0.0221
+* QoE: 3.7754
+* Accruals: -0.0335
+* 12M Momentum (ex-1M): 0.0881
+* Annualized Volatility: 0.2058
+
+#### Stock ID: stock_207 ####
+* ROA: 0.0195
+* ROE: 0.0348
+* QoE: 2.0549
+* Accruals: -0.0206
+* 12M Momentum (ex-1M): 0.1127
+* Annualized Volatility: 0.1733
+
+#### Stock ID: stock_274 ####
+* ROA: 0.0129
+* ROE: 0.0754
+* QoE: 2.7673
+* Accruals: -0.0228
+* 12M Momentum (ex-1M): 0.1099
+* Annualized Volatility: 0.2832
+
+#### Stock ID: stock_46 ####
+* ROA: 0.0215
+* ROE: 0.0759
+* QoE: 1.4865
+* Accruals: -0.0105
+* 12M Momentum (ex-1M): 0.0306
+* Annualized Volatility: 0.1759
+
+#### Stock ID: stock_8 ####
+* ROA: 0.0557
+* ROE: 0.1193
+* QoE: 1.7356
+* Accruals: -0.0410
+* 12M Momentum (ex-1M): -0.0818
+* Annualized Volatility: 0.2827
+
+#### Stock ID: stock_410 ####
+* ROA: 0.0073
+* ROE: 0.0095
+* QoE: 7.8694
+* Accruals: -0.0502
+* 12M Momentum (ex-1M): -0.0936
+* Annualized Volatility: 0.3202
+
+#### Stock ID: stock_443 ####
+* ROA: 0.0247
+* ROE: 0.1008
+* QoE: 1.5865
+* Accruals: -0.0145
+* 12M Momentum (ex-1M): 0.0106
+* Annualized Volatility: 0.1899
+
+#### Stock ID: stock_54 ####
+* ROA: 0.0052
+* ROE: 0.0176
+* QoE: 1.8071
+* Accruals: -0.0042
+* 12M Momentum (ex-1M): -0.0762
+* Annualized Volatility: 0.2583
+
+#### Stock ID: stock_470 ####
+* ROA: 0.0370
+* ROE: 0.0494
+* QoE: 1.3243
+* Accruals: -0.0120
+* 12M Momentum (ex-1M): 0.0468
+* Annualized Volatility: 0.3059
+
+#### Stock ID: stock_331 ####
+* ROA: 0.0303
+* ROE: 0.0737
+* QoE: 1.0850
+* Accruals: -0.0026
+* 12M Momentum (ex-1M): 0.0590
+* Annualized Volatility: 0.3431
+
+#### Stock ID: stock_302 ####
+* ROA: 0.0269
+* ROE: 0.0708
+* QoE: 2.9430
+* Accruals: -0.0522
+* 12M Momentum (ex-1M): -0.0092
+* Annualized Volatility: 0.1967
+
+#### Stock ID: stock_384 ####
+* ROA: 0.0328
+* ROE: 0.0929
+* QoE: 1.0503
+* Accruals: -0.0016
+* 12M Momentum (ex-1M): 0.1098
+* Annualized Volatility: 0.2045
+
+#### Stock ID: stock_242 ####
+* ROA: 0.0151
+* ROE: 0.0384
+* QoE: 2.9670
+* Accruals: -0.0297
+* 12M Momentum (ex-1M): 0.0204
+* Annualized Volatility: 0.1512
+
+#### Stock ID: stock_71 ####
+* ROA: 0.0135
+* ROE: 0.0323
+* QoE: 1.7069
+* Accruals: -0.0096
+* 12M Momentum (ex-1M): 0.0305
+* Annualized Volatility: 0.2120
+
+#### Stock ID: stock_2 ####
+* ROA: 0.0404
+* ROE: 0.2588
+* QoE: 1.8194
+* Accruals: -0.0331
+* 12M Momentum (ex-1M): 0.2253
+* Annualized Volatility: 0.2234
+
+#### Stock ID: stock_312 ####
+* ROA: 0.0262
+* ROE: 0.0400
+* QoE: 1.7348
+* Accruals: -0.0192
+* 12M Momentum (ex-1M): 0.0623
+* Annualized Volatility: 0.4430
+
+#### Stock ID: stock_229 ####
+* ROA: 0.0012
+* ROE: 0.0052
+* QoE: 11.1343
+* Accruals: -0.0119
+* 12M Momentum (ex-1M): -0.0126
+* Annualized Volatility: 0.2193
+
+#### Stock ID: stock_83 ####
+* ROA: -0.0087
+* ROE: -0.0179
+* QoE: -4.8469
+* Accruals: -0.0507
+* 12M Momentum (ex-1M): 0.1776
+* Annualized Volatility: 0.1629
+
+#### Stock ID: stock_89 ####
+* ROA: 0.0135
+* ROE: 0.0419
+* QoE: 1.9342
+* Accruals: -0.0126
+* 12M Momentum (ex-1M): 0.0145
+* Annualized Volatility: 0.2285
+
+#### Stock ID: stock_1 ####
+* ROA: 0.0296
+* ROE: 0.0595
+* QoE: 1.3704
+* Accruals: -0.0110
+* 12M Momentum (ex-1M): 0.0385
+* Annualized Volatility: 0.2478
+
+#### Stock ID: stock_311 ####
+* ROA: 0.0637
+* ROE: -1.3703
+* QoE: 1.2040
+* Accruals: -0.0130
+* 12M Momentum (ex-1M): -0.0523
+* Annualized Volatility: 0.2798
+
+#### Stock ID: stock_369 ####
+* ROA: 0.0198
+* ROE: 0.0394
+* QoE: 0.7755
+* Accruals: 0.0045
+* 12M Momentum (ex-1M): 0.1435
+* Annualized Volatility: 0.2167
+
+#### Stock ID: stock_343 ####
+* ROA: 0.0210
+* ROE: 0.0500
+* QoE: 1.2662
+* Accruals: -0.0056
+* 12M Momentum (ex-1M): 0.0689
+* Annualized Volatility: 0.2985
+
+#### Stock ID: stock_97 ####
+* ROA: 0.0095
+* ROE: 0.0145
+* QoE: 2.2817
+* Accruals: -0.0122
+* 12M Momentum (ex-1M): 0.0180
+* Annualized Volatility: 0.2173
+
+#### Stock ID: stock_142 ####
+* ROA: 0.0086
+* ROE: 0.0269
+* QoE: 0.6667
+* Accruals: 0.0029
+* 12M Momentum (ex-1M): 0.1451
+* Annualized Volatility: 0.1654
+
+#### Stock ID: stock_27 ####
+* ROA: 0.0111
+* ROE: 0.0135
+* QoE: 0.8145
+* Accruals: 0.0021
+* 12M Momentum (ex-1M): 0.0300
+* Annualized Volatility: 0.4289
+
+#### Stock ID: stock_126 ####
+* ROA: 0.0101
+* ROE: 0.0159
+* QoE: 1.8496
+* Accruals: -0.0086
+* 12M Momentum (ex-1M): 0.0286
+* Annualized Volatility: 0.2189
+
+#### Stock ID: stock_387 ####
+* ROA: 0.0074
+* ROE: 0.0119
+* QoE: 1.5671
+* Accruals: -0.0042
+* 12M Momentum (ex-1M): 0.0363
+* Annualized Volatility: 0.2629
+
+#### Stock ID: stock_34 ####
+* ROA: 0.0168
+* ROE: 0.0220
+* QoE: 1.3592
+* Accruals: -0.0061
+* 12M Momentum (ex-1M): -0.0368
+* Annualized Volatility: 0.2292
+
+#### Stock ID: stock_321 ####
+* ROA: 0.0212
+* ROE: 0.0696
+* QoE: 1.0634
+* Accruals: -0.0013
+* 12M Momentum (ex-1M): 0.0600
+* Annualized Volatility: 0.1765
+
+#### Stock ID: stock_98 ####
+* ROA: 0.0213
+* ROE: 0.0413
+* QoE: 2.7989
+* Accruals: -0.0383
+* 12M Momentum (ex-1M): -0.0181
+* Annualized Volatility: 0.2236
+
+#### Stock ID: stock_295 ####
+* ROA: 0.0336
+* ROE: 0.2923
+* QoE: -1.3025
+* Accruals: 0.0773
+* 12M Momentum (ex-1M): 0.3642
+* Annualized Volatility: 0.2317
+
+#### Stock ID: stock_290 ####
+* ROA: 0.0043
+* ROE: 0.0478
+* QoE: 3.6202
+* Accruals: -0.0113
+* 12M Momentum (ex-1M): -0.0142
+* Annualized Volatility: 0.2967
+
+#### Stock ID: stock_389 ####
+* ROA: 0.0290
+* ROE: -0.1222
+* QoE: 1.6890
+* Accruals: -0.0200
+* 12M Momentum (ex-1M): 0.0360
+* Annualized Volatility: 0.2457
+
+#### Stock ID: stock_227 ####
+* ROA: 0.0049
+* ROE: 0.0096
+* QoE: 3.2919
+* Accruals: -0.0111
+* 12M Momentum (ex-1M): 0.0479
+* Annualized Volatility: 0.1926
+
+#### Stock ID: stock_73 ####
+* ROA: 0.0111
+* ROE: 0.0297
+* QoE: -0.6018
+* Accruals: 0.0178
+* 12M Momentum (ex-1M): 0.3615
+* Annualized Volatility: 0.2712
+
+#### Stock ID: stock_258 ####
+* ROA: 0.0142
+* ROE: 0.0360
+* QoE: 0.6501
+* Accruals: 0.0050
+* 12M Momentum (ex-1M): 0.0737
+* Annualized Volatility: 0.2271
+
+#### Stock ID: stock_424 ####
+* ROA: 0.0162
+* ROE: 0.0332
+* QoE: 1.3288
+* Accruals: -0.0053
+* 12M Momentum (ex-1M): -0.0002
+* Annualized Volatility: 0.2007
+
+#### Stock ID: stock_300 ####
+* ROA: 0.0078
+* ROE: 0.0242
+* QoE: 2.7074
+* Accruals: -0.0133
+* 12M Momentum (ex-1M): 0.1354
+* Annualized Volatility: 0.2826
+
+#### Stock ID: stock_246 ####
+* ROA: 0.0117
+* ROE: 0.0247
+* QoE: 1.0195
+* Accruals: -0.0002
+* 12M Momentum (ex-1M): 0.0059
+* Annualized Volatility: 0.1725
+
+#### Stock ID: stock_77 ####
+* ROA: 0.0062
+* ROE: 0.0328
+* QoE: 0.0000
+* Accruals: 0.0062
+* 12M Momentum (ex-1M): 0.2702
+* Annualized Volatility: 0.4011
+
+#### Stock ID: stock_375 ####
+* ROA: 0.0358
+* ROE: 0.0457
+* QoE: 0.9632
+* Accruals: 0.0013
+* 12M Momentum (ex-1M): -0.1155
+* Annualized Volatility: 0.2073
+
+#### Stock ID: stock_170 ####
+* ROA: 0.0371
+* ROE: 0.0753
+* QoE: 0.5757
+* Accruals: 0.0157
+* 12M Momentum (ex-1M): 0.0571
+* Annualized Volatility: 0.2073
+
+#### Stock ID: stock_138 ####
+* ROA: 0.0212
+* ROE: 0.0680
+* QoE: 1.4822
+* Accruals: -0.0102
+* 12M Momentum (ex-1M): 0.0361
+* Annualized Volatility: 0.3453
+
+#### Stock ID: stock_448 ####
+* ROA: 0.0060
+* ROE: 0.0130
+* QoE: 3.5577
+* Accruals: -0.0154
+* 12M Momentum (ex-1M): 0.1009
+* Annualized Volatility: 0.2914
+
+#### Stock ID: stock_444 ####
+* ROA: 0.0225
+* ROE: 0.0912
+* QoE: 0.9734
+* Accruals: 0.0006
+* 12M Momentum (ex-1M): 0.0148
+* Annualized Volatility: 0.2316
+
+#### Stock ID: stock_147 ####
+* ROA: 0.0087
+* ROE: 0.0232
+* QoE: 2.6348
+* Accruals: -0.0143
+* 12M Momentum (ex-1M): -0.0840
+* Annualized Volatility: 0.2158
+
+#### Stock ID: stock_84 ####
+* ROA: 0.0086
+* ROE: 0.0709
+* QoE: 3.0508
+* Accruals: -0.0176
+* 12M Momentum (ex-1M): -0.0128
+* Annualized Volatility: 0.3177
+
+#### Stock ID: stock_167 ####
+* ROA: 0.0100
+* ROE: 0.0170
+* QoE: 1.8346
+* Accruals: -0.0084
+* 12M Momentum (ex-1M): 0.1513
+* Annualized Volatility: 0.2703
+
+#### Stock ID: stock_238 ####
+* ROA: 0.0183
+* ROE: 0.0380
+* QoE: 2.2260
+* Accruals: -0.0224
+* 12M Momentum (ex-1M): -0.0118
+* Annualized Volatility: 0.2586
+
+#### Stock ID: stock_320 ####
+* ROA: 0.0306
+* ROE: 0.0829
+* QoE: 0.9020
+* Accruals: 0.0030
+* 12M Momentum (ex-1M): -0.1264
+* Annualized Volatility: 0.2506
+
+#### Stock ID: stock_431 ####
+* ROA: 0.0247
+* ROE: 0.1055
+* QoE: 0.3573
+* Accruals: 0.0159
+* 12M Momentum (ex-1M): 0.3469
+* Annualized Volatility: 0.2465
+
+#### Stock ID: stock_394 ####
+* ROA: 0.0238
+* ROE: 0.0522
+* QoE: 2.0649
+* Accruals: -0.0254
+* 12M Momentum (ex-1M): -0.1426
+* Annualized Volatility: 0.2582
+
+#### Stock ID: stock_156 ####
+* ROA: -0.0020
+* ROE: -0.0078
+* QoE: -4.7060
+* Accruals: -0.0115
+* 12M Momentum (ex-1M): 0.1027
+* Annualized Volatility: 0.2299
+
+#### Stock ID: stock_421 ####
+* ROA: 0.0148
+* ROE: 0.0248
+* QoE: 2.0808
+* Accruals: -0.0160
+* 12M Momentum (ex-1M): -0.1482
+* Annualized Volatility: 0.2572
+
+#### Stock ID: stock_76 ####
+* ROA: 0.0080
+* ROE: 0.0572
+* QoE: 2.3069
+* Accruals: -0.0104
+* 12M Momentum (ex-1M): -0.0367
+* Annualized Volatility: 0.2209
+
+#### Stock ID: stock_172 ####
+* ROA: 0.0083
+* ROE: 0.0306
+* QoE: 1.8496
+* Accruals: -0.0070
+* 12M Momentum (ex-1M): 0.2112
+* Annualized Volatility: 0.1507
+
+#### Stock ID: stock_286 ####
+* ROA: 0.0118
+* ROE: 0.0306
+* QoE: 1.5299
+* Accruals: -0.0063
+* 12M Momentum (ex-1M): -0.0862
+* Annualized Volatility: 0.1696
+
+#### Stock ID: stock_478 ####
+* ROA: 0.0115
+* ROE: 0.0201
+* QoE: 1.5885
+* Accruals: -0.0067
+* 12M Momentum (ex-1M): -0.0447
+* Annualized Volatility: 0.2033
+
+#### Stock ID: stock_169 ####
+* ROA: 0.0095
+* ROE: 0.0182
+* QoE: 3.5589
+* Accruals: -0.0243
+* 12M Momentum (ex-1M): -0.0269
+* Annualized Volatility: 0.3398
+
+#### Stock ID: stock_350 ####
+* ROA: -0.0007
+* ROE: -0.0190
+* QoE: -5.1273
+* Accruals: -0.0042
+* 12M Momentum (ex-1M): 0.1449
+* Annualized Volatility: 0.2058
+
+#### Stock ID: stock_22 ####
+* ROA: 0.0182
+* ROE: 0.0294
+* QoE: 2.2737
+* Accruals: -0.0232
+* 12M Momentum (ex-1M): -0.1296
+* Annualized Volatility: 0.3614
+
+#### Stock ID: stock_403 ####
+* ROA: 0.0146
+* ROE: 0.0227
+* QoE: 1.6711
+* Accruals: -0.0098
+* 12M Momentum (ex-1M): -0.0077
+* Annualized Volatility: 0.2057
+
+#### Stock ID: stock_255 ####
+* ROA: 0.0046
+* ROE: 0.0202
+* QoE: -0.1862
+* Accruals: 0.0055
+* 12M Momentum (ex-1M): 0.1300
+* Annualized Volatility: 0.3154
+
+#### Stock ID: stock_368 ####
+* ROA: 0.0046
+* ROE: 0.0116
+* QoE: 3.2717
+* Accruals: -0.0105
+* 12M Momentum (ex-1M): 0.0395
+* Annualized Volatility: 0.2551
+
+#### Stock ID: stock_293 ####
+* ROA: 0.0390
+* ROE: 0.0516
+* QoE: 1.3301
+* Accruals: -0.0129
+* 12M Momentum (ex-1M): 0.0083
+* Annualized Volatility: 0.2874
+
+#### Stock ID: stock_163 ####
+* ROA: 0.0444
+* ROE: 0.0973
+* QoE: 0.3919
+* Accruals: 0.0270
+* 12M Momentum (ex-1M): -0.0279
+* Annualized Volatility: 0.1932
+
+#### Stock ID: stock_51 ####
+* ROA: -0.0448
+* ROE: 0.2619
+* QoE: 0.2180
+* Accruals: -0.0350
+* 12M Momentum (ex-1M): -0.3535
+* Annualized Volatility: 0.3275
+
+#### Stock ID: stock_164 ####
+* ROA: 0.0292
+* ROE: 0.2666
+* QoE: -2.1827
+* Accruals: 0.0930
+* 12M Momentum (ex-1M): 0.4868
+* Annualized Volatility: 0.2896
+
+#### Stock ID: stock_216 ####
+* ROA: 0.0096
+* ROE: 0.0272
+* QoE: 3.8708
+* Accruals: -0.0276
+* 12M Momentum (ex-1M): -0.1156
+* Annualized Volatility: 0.3133
+
+#### Stock ID: stock_315 ####
+* ROA: 0.0204
+* ROE: 0.0417
+* QoE: 0.7889
+* Accruals: 0.0043
+* 12M Momentum (ex-1M): 0.0342
+* Annualized Volatility: 0.2131
+
+#### Stock ID: stock_391 ####
+* ROA: 0.0125
+* ROE: 0.1189
+* QoE: 1.8593
+* Accruals: -0.0108
+* 12M Momentum (ex-1M): 0.0037
+* Annualized Volatility: 0.2772
+
+#### Stock ID: stock_212 ####
+* ROA: 0.0093
+* ROE: 0.0199
+* QoE: 1.5253
+* Accruals: -0.0049
+* 12M Momentum (ex-1M): 0.0285
+* Annualized Volatility: 0.2512
+
+#### Stock ID: stock_203 ####
+* ROA: 0.0190
+* ROE: 0.0429
+* QoE: 3.0321
+* Accruals: -0.0386
+* 12M Momentum (ex-1M): 0.0534
+* Annualized Volatility: 0.2172
+
+#### Stock ID: stock_262 ####
+* ROA: 0.0091
+* ROE: 0.0207
+* QoE: 1.6379
+* Accruals: -0.0058
+* 12M Momentum (ex-1M): 0.0528
+* Annualized Volatility: 0.2119
+
+#### Stock ID: stock_472 ####
+* ROA: 0.0017
+* ROE: 0.0028
+* QoE: 8.3571
+* Accruals: -0.0124
+* 12M Momentum (ex-1M): -0.0446
+* Annualized Volatility: 0.2208
+
+#### Stock ID: stock_364 ####
+* ROA: 0.0214
+* ROE: 0.0587
+* QoE: 1.6432
+* Accruals: -0.0138
+* 12M Momentum (ex-1M): -0.1510
+* Annualized Volatility: 0.1793
+
+#### Stock ID: stock_471 ####
+* ROA: -0.0617
+* ROE: -0.2213
+* QoE: -0.2878
+* Accruals: -0.0794
+* 12M Momentum (ex-1M): 0.3341
+* Annualized Volatility: 0.1723
+
+#### Stock ID: stock_356 ####
+* ROA: 0.0105
+* ROE: 0.0174
+* QoE: 1.4267
+* Accruals: -0.0045
+* 12M Momentum (ex-1M): -0.0911
+* Annualized Volatility: 0.2394
+
+#### Stock ID: stock_281 ####
+* ROA: 0.0315
+* ROE: 1.1761
+* QoE: 2.4910
+* Accruals: -0.0470
+* 12M Momentum (ex-1M): 0.2063
+* Annualized Volatility: 0.2373
+
+#### Stock ID: stock_341 ####
+* ROA: 0.0132
+* ROE: 0.0324
+* QoE: 3.2498
+* Accruals: -0.0297
+* 12M Momentum (ex-1M): -0.1431
+* Annualized Volatility: 0.2185
+
+#### Stock ID: stock_213 ####
+* ROA: 0.0063
+* ROE: 0.0119
+* QoE: 4.2561
+* Accruals: -0.0204
+* 12M Momentum (ex-1M): -0.0232
+* Annualized Volatility: 0.2274
+
+#### Stock ID: stock_110 ####
+* ROA: 0.0058
+* ROE: 0.0071
+* QoE: 1.8925
+* Accruals: -0.0052
+* 12M Momentum (ex-1M): -0.1098
+* Annualized Volatility: 0.2815
+
+#### Stock ID: stock_57 ####
+* ROA: 0.0070
+* ROE: 0.0154
+* QoE: 2.9450
+* Accruals: -0.0136
+* 12M Momentum (ex-1M): -0.0790
+* Annualized Volatility: 0.1840
+
+#### Stock ID: stock_20 ####
+* ROA: 0.0057
+* ROE: 0.0121
+* QoE: 6.7788
+* Accruals: -0.0328
+* 12M Momentum (ex-1M): -0.0954
+* Annualized Volatility: 0.2283
+
+#### Stock ID: stock_241 ####
+* ROA: 0.0407
+* ROE: 0.0619
+* QoE: 0.9807
+* Accruals: 0.0008
+* 12M Momentum (ex-1M): 0.0886
+* Annualized Volatility: 0.1748
+
+#### Stock ID: stock_256 ####
+* ROA: 0.0268
+* ROE: 0.1012
+* QoE: -0.4421
+* Accruals: 0.0386
+* 12M Momentum (ex-1M): 0.1205
+* Annualized Volatility: 0.1279
+
+#### Stock ID: stock_180 ####
+* ROA: 0.0274
+* ROE: 0.0412
+* QoE: -0.1717
+* Accruals: 0.0321
+* 12M Momentum (ex-1M): 0.0161
+* Annualized Volatility: 0.4292
+
+#### Stock ID: stock_15 ####
+* ROA: 0.0101
+* ROE: 0.0590
+* QoE: 1.6905
+* Accruals: -0.0069
+* 12M Momentum (ex-1M): -0.2117
+* Annualized Volatility: 0.3461
+
+#### Stock ID: stock_323 ####
+* ROA: -0.0323
+* ROE: -0.3044
+* QoE: -0.0404
+* Accruals: -0.0336
+* 12M Momentum (ex-1M): 0.8699
+* Annualized Volatility: 0.3393
+
+#### Stock ID: stock_159 ####
+* ROA: 0.0235
+* ROE: -0.0919
+* QoE: 3.7900
+* Accruals: -0.0655
+* 12M Momentum (ex-1M): -0.2547
+* Annualized Volatility: 0.3796
+
+#### Stock ID: stock_7 ####
+* ROA: 0.0381
+* ROE: 0.0757
+* QoE: 0.4487
+* Accruals: 0.0210
+* 12M Momentum (ex-1M): 0.0762
+* Annualized Volatility: 0.2312
+
+#### Stock ID: stock_422 ####
+* ROA: 0.0146
+* ROE: 0.0589
+* QoE: 0.8653
+* Accruals: 0.0020
+* 12M Momentum (ex-1M): 0.0580
+* Annualized Volatility: 0.2695
+
+#### Stock ID: stock_428 ####
+* ROA: 0.0041
+* ROE: 0.0069
+* QoE: 2.3374
+* Accruals: -0.0055
+* 12M Momentum (ex-1M): 0.2475
+* Annualized Volatility: 0.2398
+
+#### Stock ID: stock_106 ####
+* ROA: 0.0086
+* ROE: 0.0179
+* QoE: 3.6662
+* Accruals: -0.0229
+* 12M Momentum (ex-1M): -0.1926
+* Annualized Volatility: 0.3170
+
+#### Stock ID: stock_210 ####
+* ROA: 0.0227
+* ROE: -0.6848
+* QoE: 1.7914
+* Accruals: -0.0180
+* 12M Momentum (ex-1M): 0.1619
+* Annualized Volatility: 0.2651
+
+#### Stock ID: stock_132 ####
+* ROA: 0.0036
+* ROE: 0.0114
+* QoE: 3.7383
+* Accruals: -0.0099
+* 12M Momentum (ex-1M): -0.1496
+* Annualized Volatility: 0.2038
+
+#### Stock ID: stock_248 ####
+* ROA: -0.0079
+* ROE: -0.0143
+* QoE: -4.9178
+* Accruals: -0.0466
+* 12M Momentum (ex-1M): 0.0102
+* Annualized Volatility: 0.2744
+
+#### Stock ID: stock_337 ####
+* ROA: 0.0289
+* ROE: 0.0467
+* QoE: 1.1596
+* Accruals: -0.0046
+* 12M Momentum (ex-1M): -0.2041
+* Annualized Volatility: 0.4266
+
+#### Stock ID: stock_42 ####
+* ROA: 0.0044
+* ROE: 0.0074
+* QoE: 2.8425
+* Accruals: -0.0080
+* 12M Momentum (ex-1M): -0.1078
+* Annualized Volatility: 0.2596
+
+#### Stock ID: stock_377 ####
+* ROA: 0.0219
+* ROE: 0.0444
+* QoE: 1.9801
+* Accruals: -0.0215
+* 12M Momentum (ex-1M): -0.1455
+* Annualized Volatility: 0.2316
+
+#### Stock ID: stock_129 ####
+* ROA: 0.0100
+* ROE: 0.0306
+* QoE: 3.3673
+* Accruals: -0.0237
+* 12M Momentum (ex-1M): -0.3098
+* Annualized Volatility: 0.3111
+
+#### Stock ID: stock_55 ####
+* ROA: 0.0213
+* ROE: -0.0606
+* QoE: -0.9340
+* Accruals: 0.0411
+* 12M Momentum (ex-1M): -0.1540
+* Annualized Volatility: 0.3791
+
+#### Stock ID: stock_327 ####
+* ROA: 0.0073
+* ROE: 0.0116
+* QoE: 5.2047
+* Accruals: -0.0306
+* 12M Momentum (ex-1M): -0.1547
+* Annualized Volatility: 0.2861
+
+#### Stock ID: stock_198 ####
+* ROA: 0.0225
+* ROE: 0.0552
+* QoE: 1.4729
+* Accruals: -0.0107
+* 12M Momentum (ex-1M): -0.1115
+* Annualized Volatility: 0.2727
+
+#### Stock ID: stock_388 ####
+* ROA: 0.0253
+* ROE: -0.0504
+* QoE: 1.1784
+* Accruals: -0.0045
+* 12M Momentum (ex-1M): -0.0799
+* Annualized Volatility: 0.2511
+
+#### Stock ID: stock_230 ####
+* ROA: 0.0105
+* ROE: 0.0409
+* QoE: 2.5298
+* Accruals: -0.0160
+* 12M Momentum (ex-1M): -0.1975
+* Annualized Volatility: 0.2636
+
+#### Stock ID: stock_137 ####
+* ROA: 0.0268
+* ROE: 0.0561
+* QoE: 2.0480
+* Accruals: -0.0281
+* 12M Momentum (ex-1M): -0.1512
+* Annualized Volatility: 0.2519
+
+#### Stock ID: stock_393 ####
+* ROA: -0.0012
+* ROE: -0.0032
+* QoE: -16.4980
+* Accruals: -0.0214
+* 12M Momentum (ex-1M): -0.0331
+* Annualized Volatility: 0.2278
+
+#### Stock ID: stock_299 ####
+* ROA: 0.0052
+* ROE: 0.0102
+* QoE: 2.5606
+* Accruals: -0.0082
+* 12M Momentum (ex-1M): -0.2319
+* Annualized Volatility: 0.3193
+
+#### Stock ID: stock_276 ####
+* ROA: 0.0153
+* ROE: 0.0413
+* QoE: 1.1734
+* Accruals: -0.0027
+* 12M Momentum (ex-1M): -0.0877
+* Annualized Volatility: 0.1865
+
+#### Stock ID: stock_220 ####
+* ROA: 0.0695
+* ROE: 0.1439
+* QoE: 0.9452
+* Accruals: 0.0038
+* 12M Momentum (ex-1M): -0.2255
+* Annualized Volatility: 0.2522
+
+#### Stock ID: stock_249 ####
+* ROA: -0.0033
+* ROE: -0.0060
+* QoE: -3.7345
+* Accruals: -0.0155
+* 12M Momentum (ex-1M): -0.0933
+* Annualized Volatility: 0.1969
+
+#### Stock ID: stock_465 ####
+* ROA: 0.0064
+* ROE: 0.0331
+* QoE: 1.9633
+* Accruals: -0.0061
+* 12M Momentum (ex-1M): -0.1097
+* Annualized Volatility: 0.3397
+
+#### Stock ID: stock_58 ####
+* ROA: -0.0026
+* ROE: -0.0058
+* QoE: -6.5903
+* Accruals: -0.0198
+* 12M Momentum (ex-1M): -0.1266
+* Annualized Volatility: 0.2694
+
+#### Stock ID: stock_414 ####
+* ROA: -0.0004
+* ROE: -0.0015
+* QoE: -58.8218
+* Accruals: -0.0264
+* 12M Momentum (ex-1M): 0.4659
+* Annualized Volatility: 0.2032
+
+#### Stock ID: stock_177 ####
+* ROA: 0.0053
+* ROE: 0.0140
+* QoE: 2.1723
+* Accruals: -0.0062
+* 12M Momentum (ex-1M): -0.1282
+* Annualized Volatility: 0.3689
+
+#### Stock ID: stock_31 ####
+* ROA: -0.0126
+* ROE: -0.0777
+* QoE: -1.8546
+* Accruals: -0.0360
+* 12M Momentum (ex-1M): 0.0106
+* Annualized Volatility: 0.2426
+
+#### Stock ID: stock_407 ####
+* ROA: -0.0520
+* ROE: -0.1470
+* QoE: -0.9857
+* Accruals: -0.1032
+* 12M Momentum (ex-1M): 0.0128
+* Annualized Volatility: 0.1945
+
+#### Stock ID: stock_155 ####
+* ROA: -0.0075
+* ROE: -0.0147
+* QoE: -1.9712
+* Accruals: -0.0224
+* 12M Momentum (ex-1M): 0.1490
+* Annualized Volatility: 0.3106
+
+#### Stock ID: stock_124 ####
+* ROA: 0.0062
+* ROE: 0.0268
+* QoE: 2.7601
+* Accruals: -0.0110
+* 12M Momentum (ex-1M): -0.1792
+* Annualized Volatility: 0.3077
+
+#### Stock ID: stock_275 ####
+* ROA: -0.0048
+* ROE: -0.0221
+* QoE: -2.7452
+* Accruals: -0.0181
+* 12M Momentum (ex-1M): 0.0666
+* Annualized Volatility: 0.2962
+
+#### Stock ID: stock_56 ####
+* ROA: 0.0160
+* ROE: 0.0886
+* QoE: -0.9377
+* Accruals: 0.0311
+* 12M Momentum (ex-1M): 0.0320
+* Annualized Volatility: 0.2735
+
+#### Stock ID: stock_26 ####
+* ROA: 0.0113
+* ROE: 0.0478
+* QoE: -1.4084
+* Accruals: 0.0272
+* 12M Momentum (ex-1M): 0.1453
+* Annualized Volatility: 0.2039
+
+#### Stock ID: stock_60 ####
+* ROA: 0.0137
+* ROE: 0.0237
+* QoE: 2.4082
+* Accruals: -0.0193
+* 12M Momentum (ex-1M): -0.3613
+* Annualized Volatility: 0.2469
+
+#### Stock ID: stock_283 ####
+* ROA: 0.0050
+* ROE: 0.0125
+* QoE: 0.5561
+* Accruals: 0.0022
+* 12M Momentum (ex-1M): -0.1882
+* Annualized Volatility: 0.3653
+
+#### Stock ID: stock_115 ####
+* ROA: 0.0003
+* ROE: 0.0012
+* QoE: -8.5632
+* Accruals: 0.0033
+* 12M Momentum (ex-1M): -0.1257
+* Annualized Volatility: 0.3057
+
+#### Stock ID: stock_202 ####
+* ROA: 0.0375
+* ROE: 0.6305
+* QoE: 1.1604
+* Accruals: -0.0060
+* 12M Momentum (ex-1M): 0.2685
+* Annualized Volatility: 0.2049
+
+#### Stock ID: stock_150 ####
+* ROA: 0.0140
+* ROE: 0.0491
+* QoE: 3.7179
+* Accruals: -0.0381
+* 12M Momentum (ex-1M): -0.4226
+* Annualized Volatility: 0.5296
+
+#### Stock ID: stock_94 ####
+* ROA: 0.0087
+* ROE: 0.0260
+* QoE: -1.3717
+* Accruals: 0.0205
+* 12M Momentum (ex-1M): -0.1481
+* Annualized Volatility: 0.2777
+
+#### Stock ID: stock_41 ####
+* ROA: 0.0147
+* ROE: 0.0395
+* QoE: 1.3747
+* Accruals: -0.0055
+* 12M Momentum (ex-1M): -0.3077
+* Annualized Volatility: 0.3266
+
+#### Stock ID: stock_72 ####
+* ROA: 0.0097
+* ROE: -0.1270
+* QoE: -3.9591
+* Accruals: 0.0479
+* 12M Momentum (ex-1M): 0.2195
+* Annualized Volatility: 0.2137
+
+#### Stock ID: stock_272 ####
+* ROA: 0.0497
+* ROE: 0.0883
+* QoE: 0.8545
+* Accruals: 0.0072
+* 12M Momentum (ex-1M): -0.2807
+* Annualized Volatility: 0.3148
+
+#### Stock ID: stock_413 ####
+* ROA: 0.0189
+* ROE: 0.2191
+* QoE: 0.1082
+* Accruals: 0.0169
+* 12M Momentum (ex-1M): 0.0692
+* Annualized Volatility: 0.1872
+
+#### Stock ID: stock_37 ####
+* ROA: -0.0115
+* ROE: -0.0362
+* QoE: -6.0045
+* Accruals: -0.0806
+* 12M Momentum (ex-1M): -0.2720
+* Annualized Volatility: 0.3367
+
+#### Stock ID: stock_21 ####
+* ROA: -0.0612
+* ROE: -0.1019
+* QoE: -0.2250
+* Accruals: -0.0750
+* 12M Momentum (ex-1M): -0.2771
+* Annualized Volatility: 0.4898
+
+#### Stock ID: stock_117 ####
+* ROA: -0.0003
+* ROE: -0.0021
+* QoE: -25.7778
+* Accruals: -0.0073
+* 12M Momentum (ex-1M): -0.2039
+* Annualized Volatility: 0.3952
+
+#### Stock ID: stock_79 ####
+* ROA: 0.0044
+* ROE: 0.0146
+* QoE: 0.6991
+* Accruals: 0.0013
+* 12M Momentum (ex-1M): -0.3859
+* Annualized Volatility: 0.2894
+
+#### Stock ID: stock_104 ####
+* ROA: -0.0005
+* ROE: -0.0009
+* QoE: -62.2169
+* Accruals: -0.0297
+* 12M Momentum (ex-1M): 0.3033
+* Annualized Volatility: 0.2095
+
+#### Stock ID: stock_225 ####
+* ROA: -0.0860
+* ROE: -0.1587
+* QoE: -0.2436
+* Accruals: -0.1069
+* 12M Momentum (ex-1M): -0.3294
+* Annualized Volatility: 0.4027
+
+#### Stock ID: stock_181 ####
+* ROA: 0.0610
+* ROE: 0.5945
+* QoE: 1.1263
+* Accruals: -0.0077
+* 12M Momentum (ex-1M): 0.3816
+* Annualized Volatility: 0.2830
+
+#### Stock ID: stock_66 ####
+* ROA: 0.0100
+* ROE: 0.0362
+* QoE: -1.5727
+* Accruals: 0.0256
+* 12M Momentum (ex-1M): 0.1613
+* Annualized Volatility: 0.1812
+
+#### Stock ID: stock_87 ####
+* ROA: 0.0439
+* ROE: 0.8804
+* QoE: 1.5856
+* Accruals: -0.0257
+* 12M Momentum (ex-1M): 0.2389
+* Annualized Volatility: 0.1516
+
+#### Stock ID: stock_310 ####
+* ROA: 0.0308
+* ROE: -1.5419
+* QoE: 1.9414
+* Accruals: -0.0290
+* 12M Momentum (ex-1M): -0.0495
+* Annualized Volatility: 0.3189
+
+#### Stock ID: stock_146 ####
+* ROA: -0.0073
+* ROE: -0.0307
+* QoE: 4.2949
+* Accruals: 0.0241
+* 12M Momentum (ex-1M): -0.4111
+* Annualized Volatility: 0.3448
+
+#### Stock ID: stock_459 ####
+* ROA: -0.0371
+* ROE: -0.2467
+* QoE: -0.4433
+* Accruals: -0.0535
+* 12M Momentum (ex-1M): -0.5463
+* Annualized Volatility: 0.4138
+
+#### Stock ID: stock_334 ####
+* ROA: 0.0282
+* ROE: 0.7282
+* QoE: 0.3928
+* Accruals: 0.0171
+* 12M Momentum (ex-1M): 0.0354
+* Annualized Volatility: 0.3465
+
+#### Stock ID: stock_303 ####
+* ROA: 0.0008
+* ROE: 0.0011
+* QoE: -120.4615
+* Accruals: 0.0999
+* 12M Momentum (ex-1M): -0.5261
+* Annualized Volatility: 0.4698
+
+### OUTPUT FORMAT ###
+Return a CSV with a single column named `stock_id` and exactly 40 rows (plus the header). Each row should contain the identifier of one selected stock (e.g. stock_389). Order the rows by selection frequency (most frequent first); within ties, higher average composite score first.
+
+The CSV will be saved as: audit_responses/llm_selected_2024-12-31.csv
+
+Example:
+stock_id
+stock_17
+stock_203
+stock_45
+...
+
+STRICT REQUIREMENTS:
+- Use the exact column name `stock_id` (lowercase with underscore).
+- Exactly 40 data rows plus one header row. No more, no fewer.
+- Each row contains ONLY the raw stock identifier. No features, no scores, no frequencies, no citation markers, no annotations, no brackets of any kind.
+- Output only the raw CSV inside a single fenced code block (```csv ... ```). No conversational text, no per-trial output, no explanations before or after.
