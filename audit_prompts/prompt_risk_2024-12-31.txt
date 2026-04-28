@@ -1,0 +1,525 @@
+You are an expert quantitative portfolio manager. The current date is 2024-12-31.
+I have provided 40 stocks for a risk-budgeting portfolio. Derive a consensus risk-bucket assignment for each stock from 20 independent categorization trials.
+
+### OUTPUT REQUIREMENT ###
+Add a new column `Risk_Bucket` with integer values in {1, 2, 3, 4, 5}:
+- **1** = safest
+- **5** = riskiest
+
+### BUCKET DISTRIBUTION CONSTRAINT ###
+The final distribution MUST be approximately uniform: approximately 8 stocks per bucket (acceptable range: 7 to 9 per bucket). Prioritize relative ordering over absolute classifications. Do not under-populate Bucket 1 -- it should contain the safest stocks in the cross-section, not only 'absolutely safe' stocks. Target 8 stocks in Bucket 1.
+
+### METHODOLOGY ###
+Step 1 -- Volatility anchor. Rank by `annual_volatility` and place into quintiles. This is the starting point.
+
+Step 2 -- Fundamental adjustment (within +/- 1 bucket of the anchor):
+- Adjust upward (riskier) if low volatility hides weak fundamentals: negative profitability, weak cash flows, poor earnings quality, elevated leverage.
+- Adjust downward (safer) if elevated volatility is backed by robust fundamentals: strong profitability, high-quality earnings, clean balance sheet.
+
+After adjustments, rebalance bucket populations to restore approximate uniformity.
+
+### MULTI-TRIAL PROCEDURE ###
+Run exactly 20 independent categorization trials. Each trial must follow the methodology above and produce a bucket assignment for every stock, while varying meaningfully from the other trials. Acceptable sources of variation: weight the fundamental adjustment vs. the volatility anchor differently; vary which fundamental signals dominate (profitability, QoE, accruals, leverage, cash-flow quality); break near-quintile-boundary ties differently. Do NOT violate the distribution constraint in any trial.
+
+### AGGREGATION ###
+For each stock, derive the consensus bucket by majority vote across the 20 trials. Break ties using the trial-average bucket rounded to the nearest integer in {1..5}. After aggregation, if the consensus distribution violates the uniformity constraint, reassign the minimum number of boundary stocks (those with the closest average bucket to an adjacent bucket) to restore approximate uniformity.
+
+### INTERNAL REASONING ###
+Do all trial scoring, voting, tie-breaking, and rebalancing internally. Do NOT include per-trial assignments, vote counts, or any reasoning in the output. The output must be only the final consensus CSV.
+
+### DOWNSTREAM USE (context) ###
+Bucket labels map to risk budgets via b_i proportional to 1/bucket_i. Bucket 1 receives the largest share of the total risk budget at the optimum.
+
+### INPUT DATA ###
+
+#### Stock ID: stock_308 ####
+* Annualized Volatility: 0.1682
+* ROA: 0.0405
+* ROE: 0.4191
+* QoE: 1.3505
+* Accruals: -0.0142
+* Net Income (niq): 562.0000
+* Operating Cash Flow (oancfq): 759.0000
+* Total Assets (atq): 13889.0000
+* Total Liabilities (ltq): 12548.0000
+* FM Score: 0.1014
+
+#### Stock ID: stock_278 ####
+* Annualized Volatility: 0.1587
+* ROA: 0.0691
+* ROE: 0.4352
+* QoE: 1.5740
+* Accruals: -0.0397
+* Net Income (niq): 3263.0000
+* Operating Cash Flow (oancfq): 5136.0000
+* Total Assets (atq): 47237.0000
+* Total Liabilities (ltq): 39739.0000
+* FM Score: 0.8068
+
+#### Stock ID: stock_264 ####
+* Annualized Volatility: 0.2767
+* ROA: 0.0721
+* ROE: 0.3170
+* QoE: 1.8916
+* Accruals: -0.0643
+* Net Income (niq): 239.0000
+* Operating Cash Flow (oancfq): 452.1000
+* Total Assets (atq): 3313.2000
+* Total Liabilities (ltq): 2559.2000
+* FM Score: 1.1743
+
+#### Stock ID: stock_87 ####
+* Annualized Volatility: 0.1516
+* ROA: 0.0439
+* ROE: 0.8804
+* QoE: 1.5856
+* Accruals: -0.0257
+* Net Income (niq): 736.0000
+* Operating Cash Flow (oancfq): 1167.0000
+* Total Assets (atq): 16774.0000
+* Total Liabilities (ltq): 15938.0000
+* FM Score: -4.7091
+
+#### Stock ID: stock_201 ####
+* Annualized Volatility: 0.2346
+* ROA: 0.0214
+* ROE: 1.6158
+* QoE: 2.7677
+* Accruals: -0.0378
+* Net Income (niq): 1270.0000
+* Operating Cash Flow (oancfq): 3515.0000
+* Total Assets (atq): 59459.0000
+* Total Liabilities (ltq): 58673.0000
+* FM Score: 4.6293
+
+#### Stock ID: stock_451 ####
+* Annualized Volatility: 0.1735
+* ROA: 0.0482
+* ROE: 0.7223
+* QoE: 1.3458
+* Accruals: -0.0167
+* Net Income (niq): 220.1000
+* Operating Cash Flow (oancfq): 296.2000
+* Total Assets (atq): 4563.2000
+* Total Liabilities (ltq): 4258.5000
+* FM Score: 0.4854
+
+#### Stock ID: stock_3 ####
+* Annualized Volatility: 0.2096
+* ROA: 0.0109
+* ROE: 0.2571
+* QoE: 3.4894
+* Accruals: -0.0271
+* Net Income (niq): 1561.0000
+* Operating Cash Flow (oancfq): 5447.0000
+* Total Assets (atq): 143422.0000
+* Total Liabilities (ltq): 137351.0000
+* FM Score: 1.0130
+
+#### Stock ID: stock_434 ####
+* Annualized Volatility: 0.2291
+* ROA: 0.0369
+* ROE: 0.1014
+* QoE: 1.6873
+* Accruals: -0.0254
+* Net Income (niq): 772.0000
+* Operating Cash Flow (oancfq): 1302.6000
+* Total Assets (atq): 20903.7000
+* Total Liabilities (ltq): 13289.4000
+* FM Score: 0.6126
+
+#### Stock ID: stock_352 ####
+* Annualized Volatility: 0.2065
+* ROA: 0.0222
+* ROE: 0.0859
+* QoE: 1.9759
+* Accruals: -0.0216
+* Net Income (niq): 2333.4000
+* Operating Cash Flow (oancfq): 4610.5000
+* Total Assets (atq): 105202.5000
+* Total Liabilities (ltq): 78043.2000
+* FM Score: 0.3586
+
+#### Stock ID: stock_136 ####
+* Annualized Volatility: 0.2698
+* ROA: 0.0123
+* ROE: 0.0967
+* QoE: 3.7748
+* Accruals: -0.0340
+* Net Income (niq): 214.6880
+* Operating Cash Flow (oancfq): 810.4010
+* Total Assets (atq): 17503.7370
+* Total Liabilities (ltq): 15284.0630
+* FM Score: -0.0676
+
+#### Stock ID: stock_260 ####
+* Annualized Volatility: 0.2096
+* ROA: 0.0273
+* ROE: 0.0780
+* QoE: 1.8022
+* Accruals: -0.0219
+* Net Income (niq): 364.0000
+* Operating Cash Flow (oancfq): 656.0000
+* Total Assets (atq): 13338.0000
+* Total Liabilities (ltq): 8671.0000
+* FM Score: 0.5202
+
+#### Stock ID: stock_30 ####
+* Annualized Volatility: 0.1933
+* ROA: 0.0027
+* ROE: 0.0894
+* QoE: 5.9648
+* Accruals: -0.0136
+* Net Income (niq): 511.0000
+* Operating Cash Flow (oancfq): 3048.0000
+* Total Assets (atq): 185969.0000
+* Total Liabilities (ltq): 180254.0000
+* FM Score: -0.2836
+
+#### Stock ID: stock_281 ####
+* Annualized Volatility: 0.2373
+* ROA: 0.0315
+* ROE: 1.1761
+* QoE: 2.4910
+* Accruals: -0.0470
+* Net Income (niq): 167.0000
+* Operating Cash Flow (oancfq): 416.0000
+* Total Assets (atq): 5296.0000
+* Total Liabilities (ltq): 5154.0000
+* FM Score: -1.5650
+
+#### Stock ID: stock_88 ####
+* Annualized Volatility: 0.1959
+* ROA: 0.0180
+* ROE: 0.4420
+* QoE: 2.2323
+* Accruals: -0.0222
+* Net Income (niq): 99.0000
+* Operating Cash Flow (oancfq): 221.0000
+* Total Assets (atq): 5497.0000
+* Total Liabilities (ltq): 5273.0000
+* FM Score: -0.5843
+
+#### Stock ID: stock_342 ####
+* Annualized Volatility: 0.3272
+* ROA: 0.0172
+* ROE: 0.0593
+* QoE: 4.3045
+* Accruals: -0.0569
+* Net Income (niq): 350.7000
+* Operating Cash Flow (oancfq): 1509.6000
+* Total Assets (atq): 20374.6000
+* Total Liabilities (ltq): 14462.8000
+* FM Score: 1.2464
+
+#### Stock ID: stock_2 ####
+* Annualized Volatility: 0.2234
+* ROA: 0.0404
+* ROE: 0.2588
+* QoE: 1.8194
+* Accruals: -0.0331
+* Net Income (niq): 14736.0000
+* Operating Cash Flow (oancfq): 26811.0000
+* Total Assets (atq): 364980.0000
+* Total Liabilities (ltq): 308030.0000
+* FM Score: -0.9741
+
+#### Stock ID: stock_100 ####
+* Annualized Volatility: 0.1820
+* ROA: 0.0245
+* ROE: 0.0735
+* QoE: 1.8131
+* Accruals: -0.0199
+* Net Income (niq): 1798.0000
+* Operating Cash Flow (oancfq): 3260.0000
+* Total Assets (atq): 73386.0000
+* Total Liabilities (ltq): 48935.0000
+* FM Score: -0.2392
+
+#### Stock ID: stock_425 ####
+* Annualized Volatility: 0.1727
+* ROA: 0.0145
+* ROE: 0.0476
+* QoE: 2.0069
+* Accruals: -0.0146
+* Net Income (niq): 3059.0000
+* Operating Cash Flow (oancfq): 6139.0000
+* Total Assets (atq): 210742.0000
+* Total Liabilities (ltq): 146492.0000
+* FM Score: -0.0134
+
+#### Stock ID: stock_40 ####
+* Annualized Volatility: 0.4750
+* ROA: 0.0798
+* ROE: 0.4630
+* QoE: 1.2677
+* Accruals: -0.0214
+* Net Income (niq): 434.4200
+* Operating Cash Flow (oancfq): 550.7020
+* Total Assets (atq): 5442.4840
+* Total Liabilities (ltq): 4504.2780
+* FM Score: 0.9725
+
+#### Stock ID: stock_468 ####
+* Annualized Volatility: 0.1719
+* ROA: 0.0174
+* ROE: 0.0485
+* QoE: 1.4335
+* Accruals: -0.0075
+* Net Income (niq): 4577.0000
+* Operating Cash Flow (oancfq): 6561.0000
+* Total Assets (atq): 263399.0000
+* Total Liabilities (ltq): 168934.0000
+* FM Score: -0.7675
+
+#### Stock ID: stock_437 ####
+* Annualized Volatility: 0.2124
+* ROA: 0.0152
+* ROE: 0.0232
+* QoE: 3.4747
+* Accruals: -0.0376
+* Net Income (niq): 75.8970
+* Operating Cash Flow (oancfq): 263.7160
+* Total Assets (atq): 4996.5080
+* Total Liabilities (ltq): 1721.3960
+* FM Score: 1.0861
+
+#### Stock ID: stock_188 ####
+* Annualized Volatility: 0.2244
+* ROA: 0.0230
+* ROE: 0.0681
+* QoE: 3.4389
+* Accruals: -0.0560
+* Net Income (niq): 1253.0000
+* Operating Cash Flow (oancfq): 4309.0000
+* Total Assets (atq): 54525.0000
+* Total Liabilities (ltq): 36135.0000
+* FM Score: 1.2813
+
+#### Stock ID: stock_289 ####
+* Annualized Volatility: 0.2969
+* ROA: 0.0612
+* ROE: 0.0954
+* QoE: 1.5760
+* Accruals: -0.0352
+* Net Income (niq): 15688.0000
+* Operating Cash Flow (oancfq): 24724.0000
+* Total Assets (atq): 256408.0000
+* Total Liabilities (ltq): 91879.0000
+* FM Score: 0.3088
+
+#### Stock ID: stock_268 ####
+* Annualized Volatility: 0.1692
+* ROA: 0.0292
+* ROE: 0.2254
+* QoE: 1.5022
+* Accruals: -0.0147
+* Net Income (niq): 1623.0000
+* Operating Cash Flow (oancfq): 2438.0000
+* Total Assets (atq): 55520.0000
+* Total Liabilities (ltq): 48320.0000
+* FM Score: -0.1322
+
+#### Stock ID: stock_197 ####
+* Annualized Volatility: 0.2150
+* ROA: 0.0533
+* ROE: 0.1260
+* QoE: 1.2572
+* Accruals: -0.0137
+* Net Income (niq): 486.0000
+* Operating Cash Flow (oancfq): 611.0000
+* Total Assets (atq): 9114.0000
+* Total Liabilities (ltq): 5258.0000
+* FM Score: 0.3386
+
+#### Stock ID: stock_234 ####
+* Annualized Volatility: 0.2176
+* ROA: 0.0529
+* ROE: 0.3898
+* QoE: 1.4234
+* Accruals: -0.0224
+* Net Income (niq): 415.0490
+* Operating Cash Flow (oancfq): 590.7670
+* Total Assets (atq): 7845.4500
+* Total Liabilities (ltq): 6780.7680
+* FM Score: 0.8840
+
+#### Stock ID: stock_467 ####
+* Annualized Volatility: 0.1956
+* ROA: 0.0131
+* ROE: 0.0475
+* QoE: 1.7606
+* Accruals: -0.0100
+* Net Income (niq): 706.0000
+* Operating Cash Flow (oancfq): 1243.0000
+* Total Assets (atq): 53837.0000
+* Total Liabilities (ltq): 38972.0000
+* FM Score: -0.0441
+
+#### Stock ID: stock_68 ####
+* Annualized Volatility: 0.1670
+* ROA: 0.0123
+* ROE: 0.0224
+* QoE: 2.1365
+* Accruals: -0.0140
+* Net Income (niq): 469.0000
+* Operating Cash Flow (oancfq): 1002.0000
+* Total Assets (atq): 38078.0000
+* Total Liabilities (ltq): 17122.0000
+* FM Score: 0.0561
+
+#### Stock ID: stock_202 ####
+* Annualized Volatility: 0.2049
+* ROA: 0.0375
+* ROE: 0.6305
+* QoE: 1.1604
+* Accruals: -0.0060
+* Net Income (niq): 3648.0000
+* Operating Cash Flow (oancfq): 4233.0000
+* Total Assets (atq): 97264.0000
+* Total Liabilities (ltq): 91478.0000
+* FM Score: -3.5190
+
+#### Stock ID: stock_253 ####
+* Annualized Volatility: 0.1800
+* ROA: 0.0528
+* ROE: 0.6170
+* QoE: 1.0562
+* Accruals: -0.0030
+* Net Income (niq): 907.0000
+* Operating Cash Flow (oancfq): 958.0000
+* Total Assets (atq): 17165.0000
+* Total Liabilities (ltq): 15695.0000
+* FM Score: 1.3707
+
+#### Stock ID: stock_181 ####
+* Annualized Volatility: 0.2830
+* ROA: 0.0610
+* ROE: 0.5945
+* QoE: 1.1263
+* Accruals: -0.0077
+* Net Income (niq): 539.9000
+* Operating Cash Flow (oancfq): 608.1000
+* Total Assets (atq): 8852.0000
+* Total Liabilities (ltq): 7943.9000
+* FM Score: -4.9002
+
+#### Stock ID: stock_67 ####
+* Annualized Volatility: 0.1811
+* ROA: 0.0133
+* ROE: 0.0360
+* QoE: 1.8884
+* Accruals: -0.0118
+* Net Income (niq): 233.0000
+* Operating Cash Flow (oancfq): 440.0000
+* Total Assets (atq): 17525.0000
+* Total Liabilities (ltq): 11045.0000
+* FM Score: -0.0626
+
+#### Stock ID: stock_33 ####
+* Annualized Volatility: 0.3844
+* ROA: 0.0582
+* ROE: 0.0809
+* QoE: 1.5703
+* Accruals: -0.0332
+* Net Income (niq): 747.9380
+* Operating Cash Flow (oancfq): 1174.4560
+* Total Assets (atq): 12846.7230
+* Total Liabilities (ltq): 3600.8340
+* FM Score: 0.0890
+
+#### Stock ID: stock_232 ####
+* Annualized Volatility: 0.2614
+* ROA: -0.0018
+* ROE: 1.0549
+* QoE: -7.5227
+* Accruals: -0.0155
+* Net Income (niq): -33.6200
+* Operating Cash Flow (oancfq): 252.9130
+* Total Assets (atq): 18469.6290
+* Total Liabilities (ltq): 18501.5000
+* FM Score: 1.4376
+
+#### Stock ID: stock_466 ####
+* Annualized Volatility: 0.1718
+* ROA: 0.0219
+* ROE: 0.0953
+* QoE: 1.7868
+* Accruals: -0.0172
+* Net Income (niq): 760.0000
+* Operating Cash Flow (oancfq): 1358.0000
+* Total Assets (atq): 34730.0000
+* Total Liabilities (ltq): 26758.0000
+* FM Score: 0.0779
+
+#### Stock ID: stock_355 ####
+* Annualized Volatility: 0.1850
+* ROA: 0.0272
+* ROE: 0.0558
+* QoE: 1.3738
+* Accruals: -0.0102
+* Net Income (niq): 238.1000
+* Operating Cash Flow (oancfq): 327.1000
+* Total Assets (atq): 8753.8000
+* Total Liabilities (ltq): 4490.2000
+* FM Score: 0.1395
+
+#### Stock ID: stock_23 ####
+* Annualized Volatility: 0.2084
+* ROA: 0.0105
+* ROE: 0.0571
+* QoE: 2.6899
+* Accruals: -0.0177
+* Net Income (niq): 1190.0000
+* Operating Cash Flow (oancfq): 3201.0000
+* Total Assets (atq): 113743.0000
+* Total Liabilities (ltq): 92905.0000
+* FM Score: 0.1281
+
+#### Stock ID: stock_447 ####
+* Annualized Volatility: 0.1688
+* ROA: 0.0563
+* ROE: 0.1359
+* QoE: 1.2531
+* Accruals: -0.0142
+* Net Income (niq): 5318.0000
+* Operating Cash Flow (oancfq): 6664.0000
+* Total Assets (atq): 94511.0000
+* Total Liabilities (ltq): 55374.0000
+* FM Score: 0.3888
+
+#### Stock ID: stock_427 ####
+* Annualized Volatility: 0.2398
+* ROA: 0.0177
+* ROE: 0.0869
+* QoE: 1.3962
+* Accruals: -0.0070
+* Net Income (niq): 387.4000
+* Operating Cash Flow (oancfq): 540.9000
+* Total Assets (atq): 21903.8000
+* Total Liabilities (ltq): 17445.3000
+* FM Score: -0.5043
+
+#### Stock ID: stock_390 ####
+* Annualized Volatility: 0.2430
+* ROA: 0.0030
+* ROE: 0.0298
+* QoE: 13.5639
+* Accruals: -0.0380
+* Net Income (niq): 1408.0000
+* Operating Cash Flow (oancfq): 19098.0000
+* Total Assets (atq): 466055.0000
+* Total Liabilities (ltq): 418840.0000
+* FM Score: 2.1923
+
+### OUTPUT FORMAT ###
+Output the augmented dataset as raw CSV text inside a single fenced code block (```csv ... ```). Retain all original columns and add `Risk_Bucket` as the final column. Use exact column names as provided; keep `stock_id` lowercase with underscore. Include the header.
+
+The CSV will be saved as: audit_responses/llm_risk_categorized_2024-12-31.csv
+
+Output must contain exactly 40 rows plus the header, and every stock_id from the input must appear exactly once.
+
+STRICT REQUIREMENTS:
+- No citation markers, source references, footnotes, or bracketed annotations anywhere in the output. No [cite: N] tags, no [1] markers, no square brackets at all.
+- The `stock_id` column must contain only the raw identifier (e.g. `stock_389`), not `stock_389[cite: 7]` or similar.
+- No conversational text before or after the CSV.
